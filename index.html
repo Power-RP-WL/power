@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POWER — Règlement</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #e00;
+    --accent-glow: rgba(220,0,0,0.4);
+    --legal-color: #00cc44;
+    --legal-glow: rgba(0,204,68,0.4);
+    --illegal-color: #dd2222;
+    --illegal-glow: rgba(221,34,34,0.4);
+    --main-color: #ffffff;
+    --main-glow: rgba(255,255,255,0.15);
+    --bg: #080808;
+    --bg2: #101010;
+    --bg3: #151515;
+    --text: #e8e8e8;
+    --muted: #888;
+    --border: rgba(255,255,255,0.07);
+    --transition-speed: 0.9s;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+    transition: background var(--transition-speed) ease;
+  }
+
+  /* ── Theme states ── */
+  body.theme-main { --current: var(--main-color); --current-glow: var(--main-glow); --bg-tint: #080808; --stripe: rgba(255,255,255,0.02); }
+  body.theme-legal { --current: var(--legal-color); --current-glow: var(--legal-glow); --bg-tint: #030a05; --stripe: rgba(0,204,68,0.03); }
+  body.theme-illegal { --current: var(--illegal-color); --current-glow: var(--illegal-glow); --bg-tint: #0a0303; --stripe: rgba(221,34,34,0.03); }
+
+  body.theme-main { background: #080808; }
+  body.theme-legal { background: #030a05; }
+  body.theme-illegal { background: #0a0303; }
+
+  /* ── Noise overlay ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── BANNER ── */
+  .banner {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .banner img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    filter: brightness(0.85);
+    transition: filter var(--transition-speed) ease;
+  }
+
+  body.theme-legal .banner img { filter: brightness(0.85) hue-rotate(90deg) saturate(0.7); }
+  body.theme-illegal .banner img { filter: brightness(0.85) saturate(1.3); }
+
+  .banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 30%, var(--bg-tint, #080808) 100%);
+    transition: background var(--transition-speed) ease;
+  }
+
+  .banner-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.7) 100%);
+  }
+
+  /* ── NAV ── */
+  .navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 70px;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: border-color var(--transition-speed) ease;
+  }
+
+  body.theme-legal .navbar { border-bottom-color: rgba(0,204,68,0.2); }
+  body.theme-illegal .navbar { border-bottom-color: rgba(221,34,34,0.2); }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+  }
+
+  .nav-logo img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    transition: filter var(--transition-speed) ease;
+  }
+
+  body.theme-legal .nav-logo img { filter: drop-shadow(0 0 8px rgba(0,204,68,0.6)); }
+  body.theme-illegal .nav-logo img { filter: drop-shadow(0 0 8px rgba(221,34,34,0.6)); }
+
+  .nav-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 4px;
+    color: #fff;
+    transition: color var(--transition-speed) ease, text-shadow var(--transition-speed) ease;
+  }
+
+  body.theme-legal .nav-brand { color: var(--legal-color); text-shadow: 0 0 20px var(--legal-glow); }
+  body.theme-illegal .nav-brand { color: var(--illegal-color); text-shadow: 0 0 20px var(--illegal-glow); }
+
+  .nav-links {
+    display: flex;
+    gap: 6px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: #fff;
+    border-color: var(--border);
+    background: rgba(255,255,255,0.05);
+  }
+
+  .nav-links a.active-main { color: #fff; border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.07); }
+  .nav-links a.active-legal { color: var(--legal-color); border-color: rgba(0,204,68,0.4); background: rgba(0,204,68,0.08); }
+  .nav-links a.active-illegal { color: var(--illegal-color); border-color: rgba(221,34,34,0.4); background: rgba(221,34,34,0.08); }
+
+  .nav-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .dot-garde { background: #f0b429; box-shadow: 0 0 6px rgba(240,180,41,0.5); }
+
+  .nav-links a.active-garde { color: #f0b429; border-color: rgba(240,180,41,0.4); background: rgba(240,180,41,0.08); }
+
+  .dot-main { background: #fff; }
+  .dot-legal { background: var(--legal-color); box-shadow: 0 0 6px var(--legal-glow); }
+  .dot-illegal { background: var(--illegal-color); box-shadow: 0 0 6px var(--illegal-glow); }
+
+  /* ── MAIN LAYOUT ── */
+  .page-wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 30px 80px;
+  }
+
+  /* ── SECTION TABS ── */
+  .section-tabs {
+    display: flex;
+    gap: 0;
+    margin: 50px 0 0;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 70px;
+    z-index: 50;
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(20px);
+    transition: border-color var(--transition-speed) ease;
+  }
+
+  body.theme-legal .section-tabs { border-bottom-color: rgba(0,204,68,0.2); }
+  body.theme-illegal .section-tabs { border-bottom-color: rgba(221,34,34,0.2); }
+
+  .tab-btn {
+    flex: 1;
+    padding: 18px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    position: relative;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0; right: 0;
+    height: 2px;
+    background: transparent;
+    transition: background var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  }
+
+  .tab-btn.tab-garde.active { color: #f0b429; }
+  .tab-btn.tab-garde.active::after { background: #f0b429; box-shadow: 0 0 12px rgba(240,180,41,0.5); }
+
+  .tab-btn.tab-main.active { color: #fff; }
+  .tab-btn.tab-main.active::after { background: #fff; box-shadow: 0 0 12px rgba(255,255,255,0.5); }
+
+  .tab-btn.tab-legal.active { color: var(--legal-color); }
+  .tab-btn.tab-legal.active::after { background: var(--legal-color); box-shadow: 0 0 12px var(--legal-glow); }
+
+  .tab-btn.tab-illegal.active { color: var(--illegal-color); }
+  .tab-btn.tab-illegal.active::after { background: var(--illegal-color); box-shadow: 0 0 12px var(--illegal-glow); }
+
+  .tab-icon {
+    width: 22px; height: 22px;
+    flex-shrink: 0;
+  }
+
+  /* ── CONTENT SECTIONS ── */
+  .rule-section {
+    display: none;
+    animation: fadeIn 0.5s ease;
+    padding-top: 50px;
+  }
+
+  .rule-section.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-eyebrow {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    transition: color var(--transition-speed) ease;
+  }
+
+  body.theme-main .section-eyebrow { color: rgba(255,255,255,0.4); }
+  body.theme-legal .section-eyebrow { color: rgba(0,204,68,0.6); }
+  body.theme-illegal .section-eyebrow { color: rgba(221,34,34,0.6); }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 6px;
+    line-height: 1;
+    transition: color var(--transition-speed) ease, text-shadow var(--transition-speed) ease;
+  }
+
+  body.theme-main .section-title { color: #fff; text-shadow: none; }
+  body.theme-legal .section-title { color: var(--legal-color); text-shadow: 0 0 40px rgba(0,204,68,0.3); }
+  body.theme-illegal .section-title { color: var(--illegal-color); text-shadow: 0 0 40px rgba(221,34,34,0.3); }
+
+  .section-sub {
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── RULE CARDS ── */
+  .rules-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .rule-chapter {
+    margin-bottom: 36px;
+  }
+
+  .chapter-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    margin-bottom: 3px;
+    border-left: 3px solid;
+    transition: color var(--transition-speed) ease, border-color var(--transition-speed) ease, background var(--transition-speed) ease;
+  }
+
+  body.theme-main .chapter-title { color: rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.03); }
+  body.theme-legal .chapter-title { color: rgba(0,204,68,0.7); border-color: rgba(0,204,68,0.5); background: rgba(0,204,68,0.05); }
+  body.theme-illegal .chapter-title { color: rgba(221,34,34,0.7); border-color: rgba(221,34,34,0.5); background: rgba(221,34,34,0.05); }
+
+  .rule-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid transparent;
+    padding: 22px 24px;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rule-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 0;
+    transition: width var(--transition-speed) ease;
+  }
+
+  body.theme-main .rule-card::before { background: rgba(255,255,255,0.03); }
+  body.theme-legal .rule-card::before { background: rgba(0,204,68,0.04); }
+  body.theme-illegal .rule-card::before { background: rgba(221,34,34,0.04); }
+
+  .rule-card:hover::before { width: 100%; }
+
+  body.theme-main .rule-card:hover { border-left-color: rgba(255,255,255,0.3); }
+  body.theme-legal .rule-card:hover { border-left-color: rgba(0,204,68,0.5); }
+  body.theme-illegal .rule-card:hover { border-left-color: rgba(221,34,34,0.5); }
+
+  .rule-card:hover { transform: translateX(3px); }
+
+  .rule-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .rule-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 50px;
+    transition: color var(--transition-speed) ease;
+  }
+
+  body.theme-main .rule-num { color: rgba(255,255,255,0.15); }
+  body.theme-legal .rule-num { color: rgba(0,204,68,0.25); }
+  body.theme-illegal .rule-num { color: rgba(221,34,34,0.25); }
+
+  .rule-card:hover .rule-num { opacity: 1; }
+  body.theme-main .rule-card:hover .rule-num { color: rgba(255,255,255,0.4); }
+  body.theme-legal .rule-card:hover .rule-num { color: rgba(0,204,68,0.6); }
+  body.theme-illegal .rule-card:hover .rule-num { color: rgba(221,34,34,0.6); }
+
+  .rule-content { flex: 1; }
+
+  .rule-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .rule-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .rule-badge {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+  }
+
+  .badge-warn { background: rgba(255,180,0,0.12); color: rgba(255,180,0,0.8); }
+  .badge-crit { background: rgba(221,34,34,0.12); color: rgba(221,34,34,0.8); }
+  .badge-info { background: rgba(80,140,255,0.1); color: rgba(80,140,255,0.8); }
+  .badge-ok { background: rgba(0,204,68,0.1); color: rgba(0,204,68,0.8); }
+
+  /* ── DIVIDER ── */
+  .color-divider {
+    height: 1px;
+    margin: 40px 0;
+    transition: background var(--transition-speed) ease;
+  }
+  body.theme-main .color-divider { background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent); }
+  body.theme-legal .color-divider { background: linear-gradient(to right, transparent, rgba(0,204,68,0.2), transparent); }
+  body.theme-illegal .color-divider { background: linear-gradient(to right, transparent, rgba(221,34,34,0.2), transparent); }
+
+  /* ── INTRO BAND ── */
+  .intro-band {
+    padding: 30px;
+    border-radius: 4px;
+    margin-bottom: 40px;
+    border-left: 4px solid;
+    transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease;
+  }
+
+  body.theme-main .intro-band { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.2); }
+  body.theme-legal .intro-band { background: rgba(0,204,68,0.06); border-color: rgba(0,204,68,0.4); }
+  body.theme-illegal .intro-band { background: rgba(221,34,34,0.06); border-color: rgba(221,34,34,0.4); }
+
+  .intro-band p {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .intro-band strong {
+    font-weight: 700;
+    color: #ddd;
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 30px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 60px;
+    transition: border-color var(--transition-speed) ease;
+  }
+
+  body.theme-legal .site-footer { border-top-color: rgba(0,204,68,0.15); }
+  body.theme-illegal .site-footer { border-top-color: rgba(221,34,34,0.15); }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-logo img { width: 30px; height: 30px; object-fit: contain; opacity: 0.6; }
+  .footer-text { font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+
+  .footer-right { font-size: 12px; color: rgba(100,100,100,0.6); }
+
+  /* ── SCROLL INDICATOR ── */
+  .scroll-bar {
+    position: fixed;
+    top: 70px; left: 0;
+    height: 2px;
+    width: 0%;
+    z-index: 200;
+    transition: background var(--transition-speed) ease, width 0.1s linear;
+  }
+
+  body.theme-main .scroll-bar { background: #fff; }
+  body.theme-legal .scroll-bar { background: var(--legal-color); box-shadow: 0 0 8px var(--legal-glow); }
+  body.theme-illegal .scroll-bar { background: var(--illegal-color); box-shadow: 0 0 8px var(--illegal-glow); }
+
+  /* ── LOGO SWITCHER (corner indicator) ── */
+  .corner-logo {
+    position: fixed;
+    bottom: 30px; right: 30px;
+    width: 50px; height: 50px;
+    z-index: 99;
+    opacity: 0.5;
+    transition: opacity 0.3s, filter var(--transition-speed) ease, transform 0.3s;
+  }
+
+  .corner-logo:hover { opacity: 1; transform: scale(1.1); }
+
+  body.theme-main .corner-logo { filter: none; }
+  body.theme-legal .corner-logo { filter: drop-shadow(0 0 10px rgba(0,204,68,0.7)) hue-rotate(80deg); opacity: 0.7; }
+  body.theme-illegal .corner-logo { filter: drop-shadow(0 0 10px rgba(221,34,34,0.7)) hue-rotate(-10deg) saturate(2); opacity: 0.7; }
+</style>
+</head>
+<body class="theme-main">
+
+<div class="scroll-bar" id="scrollBar"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a class="nav-logo" href="#">
+    <img src="POWER_2.png" alt="Power" id="navLogo">
+    <span class="nav-brand">POWER</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" id="navGarde" onclick="switchSection('garde');return false;">
+      <span class="nav-dot dot-garde"></span> Accueil
+    </a></li>
+    <li><a href="#" class="active-main" id="navMain" onclick="switchSection('main');return false;">
+      <span class="nav-dot dot-main"></span> Règlement principal
+    </a></li>
+    <li><a href="#" id="navLegal" onclick="switchSection('legal');return false;">
+      <span class="nav-dot dot-legal"></span> Règlement légal
+    </a></li>
+    <li><a href="#" id="navIllegal" onclick="switchSection('illegal');return false;">
+      <span class="nav-dot dot-illegal"></span> Règlement illégal
+    </a></li>
+  </ul>
+</nav>
+
+<!-- BANNER -->
+<div class="banner" style="margin-top:70px;">
+  <img src="front_street_2.png" alt="Power Banner" id="bannerImg" style="object-fit:contain;background:#000;">
+  <div class="banner-overlay"></div>
+  <div class="banner-vignette"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="page-wrapper">
+
+  <!-- TABS -->
+  <div class="section-tabs">
+    <button class="tab-btn tab-garde" onclick="switchSection('garde')">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Accueil
+    </button>
+    <button class="tab-btn tab-main active" onclick="switchSection('main')">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      Règlement principal
+    </button>
+    <button class="tab-btn tab-legal" onclick="switchSection('legal')">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Règlement légal
+    </button>
+    <button class="tab-btn tab-illegal" onclick="switchSection('illegal')">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      Règlement illégal
+    </button>
+  </div>
+
+  <!-- ─── SECTION GARDE ─── -->
+  <div class="rule-section" id="section-garde">
+    <div class="section-header">
+      <div class="section-eyebrow">Power — GTA V</div>
+      <div class="section-title" style="color:#f0b429;text-shadow:0 0 40px rgba(240,180,41,0.3);">BIENVENUE</div>
+      <div class="section-sub">Présentation du serveur Power</div>
+    </div>
+
+    <div style="display:flex;gap:30px;align-items:center;margin-bottom:40px;flex-wrap:wrap;">
+      <img src="POWER_2.png" alt="Power Logo" style="width:120px;height:120px;object-fit:contain;filter:drop-shadow(0 0 20px rgba(240,180,41,0.4));">
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:5px;color:#fff;line-height:1;">POWER</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#f0b429;margin-top:6px;">Serveur GTA V — Roleplay Francophone</div>
+        <div style="margin-top:14px;font-size:14px;color:#aaa;font-weight:300;line-height:1.8;max-width:500px;">Power est un serveur de roleplay immersif sur GTA V, pensé pour les joueurs qui souhaitent vivre une expérience narrative riche, que ce soit dans la sphère légale ou dans le milieu criminel organisé.</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:40px;">
+      <div style="background:#101010;border:1px solid rgba(240,180,41,0.15);border-left:3px solid #f0b429;padding:24px;border-radius:4px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:#f0b429;margin-bottom:10px;">MESSAGE DU STAFF</div>
+        <p style="font-size:14px;color:#aaa;line-height:1.8;font-weight:300;">Bienvenue sur Power. Nous avons construit ce serveur pour offrir une expérience de roleplay sérieuse et immersive. Que vous soyez civil, officier ou criminel, votre présence enrichit notre ville. Respectez le règlement, incarnez votre personnage avec authenticité, et vous passerez des moments inoubliables avec nous.</p>
+        <div style="margin-top:14px;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:12px;letter-spacing:2px;color:rgba(240,180,41,0.6);">— L'ÉQUIPE POWER</div>
+      </div>
+      <div style="background:#101010;border:1px solid rgba(255,255,255,0.06);padding:24px;border-radius:4px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:#fff;margin-bottom:16px;">INFORMATIONS SERVEUR</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.05);padding-bottom:10px;">
+            <span style="font-size:13px;color:#666;font-family:'Rajdhani',sans-serif;letter-spacing:1px;text-transform:uppercase;">Jeu</span>
+            <span style="font-size:13px;color:#ddd;font-weight:700;">GTA V — FiveM</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.05);padding-bottom:10px;">
+            <span style="font-size:13px;color:#666;font-family:'Rajdhani',sans-serif;letter-spacing:1px;text-transform:uppercase;">Langue</span>
+            <span style="font-size:13px;color:#ddd;font-weight:700;">Français</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.05);padding-bottom:10px;">
+            <span style="font-size:13px;color:#666;font-family:'Rajdhani',sans-serif;letter-spacing:1px;text-transform:uppercase;">Accès</span>
+            <span style="font-size:13px;color:#f0b429;font-weight:700;">Whitelist</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:13px;color:#666;font-family:'Rajdhani',sans-serif;letter-spacing:1px;text-transform:uppercase;">Discord</span>
+            <span style="font-size:13px;color:#ddd;font-weight:700;">discord.gg/powerrp</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:40px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:4px;color:#fff;margin-bottom:20px;">COMMENT REJOINDRE</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;">
+        <div style="background:#101010;border:1px solid rgba(255,255,255,0.06);padding:20px;border-radius:4px;text-align:center;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:rgba(240,180,41,0.3);line-height:1;margin-bottom:8px;">01</div>
+          <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;letter-spacing:1px;color:#fff;margin-bottom:6px;">Rejoindre le Discord</div>
+          <div style="font-size:12px;color:#666;font-weight:300;">Rendez-vous sur notre Discord officiel pour accéder aux informations de connexion.</div>
+        </div>
+        <div style="background:#101010;border:1px solid rgba(255,255,255,0.06);padding:20px;border-radius:4px;text-align:center;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:rgba(240,180,41,0.3);line-height:1;margin-bottom:8px;">02</div>
+          <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;letter-spacing:1px;color:#fff;margin-bottom:6px;">Lire le règlement</div>
+          <div style="font-size:12px;color:#666;font-weight:300;">Parcourez les trois sections du règlement avant de soumettre votre candidature.</div>
+        </div>
+        <div style="background:#101010;border:1px solid rgba(255,255,255,0.06);padding:20px;border-radius:4px;text-align:center;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:rgba(240,180,41,0.3);line-height:1;margin-bottom:8px;">03</div>
+          <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;letter-spacing:1px;color:#fff;margin-bottom:6px;">Créer votre personnage</div>
+          <div style="font-size:12px;color:#666;font-weight:300;">Rédigez la fiche de votre personnage avec background, nom complet et motivations.</div>
+        </div>
+        <div style="background:#101010;border:1px solid rgba(255,255,255,0.06);padding:20px;border-radius:4px;text-align:center;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:rgba(240,180,41,0.3);line-height:1;margin-bottom:8px;">04</div>
+          <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;letter-spacing:1px;color:#fff;margin-bottom:6px;">Passer la whitelist</div>
+          <div style="font-size:12px;color:#666;font-weight:300;">Un staff vous contactera pour valider votre candidature. Bienvenue en ville !</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:rgba(240,180,41,0.05);border:1px solid rgba(240,180,41,0.15);border-left:3px solid #f0b429;padding:20px 24px;border-radius:4px;">
+      <p style="font-size:13px;color:#aaa;line-height:1.8;font-weight:300;">En rejoignant Power, vous acceptez l'intégralité du règlement présenté sur ce site. <strong style="color:#ddd;">Toute infraction peut entraîner des sanctions</strong> allant de l'avertissement au ban permanent selon la gravité. Le staff se réserve le droit de modifier ce règlement à tout moment — des notifications seront publiées sur le Discord officiel.</p>
+    </div>
+  </div>
+
+  <!-- ─── SECTION PRINCIPALE ─── -->
+  <div class="rule-section active" id="section-main">
+    <div class="section-header">
+      <div class="section-eyebrow">Power — Serveur GTA V</div>
+      <div class="section-title">RÈGLEMENT PRINCIPAL</div>
+      <div class="section-sub">Règles fondamentales applicables à tous les joueurs sans exception</div>
+    </div>
+
+    <div class="intro-band">
+      <p>Bienvenue sur <strong>Power</strong>. Ce règlement est obligatoire et constitue la base de toute expérience de jeu sur notre serveur. Le non-respect de ces règles peut entraîner des sanctions allant du simple avertissement au ban permanent. <strong>L'ignorance du règlement ne constitue pas une excuse.</strong></p>
+    </div>
+
+    <div class="rules-grid">
+      <div class="rule-chapter">
+        <div class="chapter-title">§ 01 — Comportement général</div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">01</div>
+            <div class="rule-content">
+              <div class="rule-title">Respect entre joueurs</div>
+              <div class="rule-desc">Tout joueur doit faire preuve de respect envers les autres membres de la communauté, que ce soit en jeu, sur Discord ou sur tout autre support lié au serveur. Les insultes, le harcèlement et la discrimination sont strictement interdits.</div>
+            </div>
+            <span class="rule-badge badge-crit">Obligatoire</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">02</div>
+            <div class="rule-content">
+              <div class="rule-title">Toxicité & harcèlement</div>
+              <div class="rule-desc">Tout comportement toxique, harcèlement répété ou acharnement sur un joueur est passible d'un ban. Cela inclut les menaces hors-RP, la mise en doute de l'équipe d'administration de manière publique et injustifiée.</div>
+            </div>
+            <span class="rule-badge badge-crit">Ban</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">03</div>
+            <div class="rule-content">
+              <div class="rule-title">Langue de communication</div>
+              <div class="rule-desc">La langue officielle du serveur est le français. L'utilisation d'autres langues dans les canaux publics est tolérée ponctuellement mais le français reste de rigueur pour tout échange avec le staff.</div>
+            </div>
+            <span class="rule-badge badge-info">Info</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-chapter">
+        <div class="chapter-title">§ 02 — Règles de roleplay</div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">04</div>
+            <div class="rule-content">
+              <div class="rule-title">Rester dans le personnage (RP)</div>
+              <div class="rule-desc">Vous devez incarner votre personnage en toute circonstance sur le serveur. Sortir du RP sans raison valable (break RP) est sanctionné. Les discussions hors-RP se font uniquement via les canaux Discord appropriés.</div>
+            </div>
+            <span class="rule-badge badge-warn">Important</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">05</div>
+            <div class="rule-content">
+              <div class="rule-title">Metagaming</div>
+              <div class="rule-desc">L'utilisation d'informations obtenues hors-RP (Discord, stream, amis, etc.) pour influencer des actions en jeu est strictement interdite. Votre personnage ne sait que ce qu'il a vécu in-game.</div>
+            </div>
+            <span class="rule-badge badge-crit">Ban</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">06</div>
+            <div class="rule-content">
+              <div class="rule-title">Powergaming</div>
+              <div class="rule-desc">Forcer des actions sur d'autres joueurs, accomplir des actes irréalistes ou utiliser des mécaniques de jeu de façon abusive pour prendre l'avantage est interdit. Le RP doit rester cohérent et réaliste.</div>
+            </div>
+            <span class="rule-badge badge-crit">Ban</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">07</div>
+            <div class="rule-content">
+              <div class="rule-title">Value of Life (VDL)</div>
+              <div class="rule-desc">Votre personnage doit valoriser sa propre vie. Vous ne pouvez pas vous jeter sur des armes pointées vers vous, ignorer les menaces crédibles ou agir de façon suicidaire sans justification RP solide.</div>
+            </div>
+            <span class="rule-badge badge-warn">Important</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">08</div>
+            <div class="rule-content">
+              <div class="rule-title">NLR — New Life Rule</div>
+              <div class="rule-desc">Après une mort RP (CK accepté ou réveil à l'hôpital), votre personnage ne se souvient pas des événements ayant conduit à sa mort. Retourner sur le lieu de son décès ou se venger immédiatement est interdit.</div>
+            </div>
+            <span class="rule-badge badge-warn">Important</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-chapter">
+        <div class="chapter-title">§ 03 — Règles techniques</div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">09</div>
+            <div class="rule-content">
+              <div class="rule-title">Cheats & modifications interdites</div>
+              <div class="rule-desc">L'utilisation de cheats, trainers, scripts de triche ou toute modification offrant un avantage non légitime est passible d'un ban permanent sans appel. Cela inclut les exploits de bugs connus.</div>
+            </div>
+            <span class="rule-badge badge-crit">Ban perm</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">10</div>
+            <div class="rule-content">
+              <div class="rule-title">Exploitation de bugs</div>
+              <div class="rule-desc">Tout bug découvert doit être signalé au staff via le Discord officiel. En exploiter un à des fins personnelles ou pour nuire à d'autres joueurs entraîne une sanction sévère.</div>
+            </div>
+            <span class="rule-badge badge-crit">Ban</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">11</div>
+            <div class="rule-content">
+              <div class="rule-title">Connexions & stabilité</div>
+              <div class="rule-desc">Se déconnecter intentionnellement pour éviter une arrestation, une mort RP ou toute conséquence en jeu (combat log) est interdit. Des problèmes techniques récurrents doivent être signalés au staff.</div>
+            </div>
+            <span class="rule-badge badge-warn">Important</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-chapter">
+        <div class="chapter-title">§ 04 — Administration</div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">12</div>
+            <div class="rule-content">
+              <div class="rule-title">Respect du staff</div>
+              <div class="rule-desc">Les décisions du staff sont finales sauf recours officiel via le Discord. Argumenter une sanction en jeu, ignorer un staff ou tenter de le contourner aggrave la situation.</div>
+            </div>
+            <span class="rule-badge badge-warn">Important</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">13</div>
+            <div class="rule-content">
+              <div class="rule-title">Création du personnage</div>
+              <div class="rule-desc">Chaque personnage doit avoir un nom réaliste (prénom + nom), un background cohérent et une apparence adaptée. Les noms de célébrités, de personnages fictifs connus ou absurdes sont refusés.</div>
+            </div>
+            <span class="rule-badge badge-info">Whitelist</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">14</div>
+            <div class="rule-content">
+              <div class="rule-title">Appels à témoin & plaintes</div>
+              <div class="rule-desc">Tout signalement de comportement abusif doit être effectué via un ticket Discord, avec preuves à l'appui (screenshots, vidéos). Les accusations non fondées publiques seront sanctionnées.</div>
+            </div>
+            <span class="rule-badge badge-info">Ticket</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SECTION LÉGAL ─── -->
+  <div class="rule-section" id="section-legal">
+    <div class="section-header">
+      <div class="section-eyebrow">Vie civile & institutions</div>
+      <div class="section-title">RÈGLEMENT LÉGAL</div>
+      <div class="section-sub">Règles encadrant les métiers légaux, les institutions et la vie civile</div>
+    </div>
+
+    <div class="intro-band">
+      <p>Ce règlement s'applique à tous les joueurs évoluant dans la sphère légale du serveur : civils, employés, forces de l'ordre, médecins, avocats. <strong>Incarner un rôle légal engage une responsabilité supplémentaire</strong> dans la qualité du RP proposé à la communauté.</p>
+    </div>
+
+    <div class="rules-grid">
+      <div class="rule-chapter">
+        <div class="chapter-title">§ L1 — Forces de l'ordre (LSPD / BCSO)</div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">L01</div>
+            <div class="rule-content">
+              <div class="rule-title">Procédures d'interpellation</div>
+              <div class="rule-desc">Toute arrestation doit respecter le protocole RP établi : mise en joue, annonce vocale, menottage, et lecture des droits. Un officier ne peut agir en solo sur des situations à haut risque sans backup.</div>
+            </div>
+            <span class="rule-badge badge-ok">LSPD</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">L02</div>
+            <div class="rule-content">
+              <div class="rule-title">Usage de la force</div>
+              <div class="rule-desc">La force létale n'est autorisée qu'en dernier recours lorsque la vie d'un officier ou d'un civil est en danger immédiat. L'escalade doit être progressive : ordre verbal → taser → arme à feu.</div>
+            </div>
+            <span class="rule-badge badge-warn">Protocole</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">L03</div>
+            <div class="rule-content">
+              <div class="rule-title">Corruption police</div>
+              <div class="rule-desc">La corruption d'un officier est possible uniquement avec validation d'un staff senior et dans un cadre RP scénarisé. Elle ne peut être utilisée pour avantager systématiquement une organisation criminelle.</div>
+            </div>
+            <span class="rule-badge badge-warn">Encadré</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">L04</div>
+            <div class="rule-content">
+              <div class="rule-title">Zones de poursuite</div>
+              <div class="rule-desc">Les courses-poursuites sont interdites dans les zones résidentielles densément peuplées sans raison RP valable. Tout accident provoqué par un officier en dehors du cadre légal engage sa responsabilité RP.</div>
+            </div>
+            <span class="rule-badge badge-info">Zones</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-chapter">
+        <div class="chapter-title">§ L2 — Services médicaux (EMS)</div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">L05</div>
+            <div class="rule-content">
+              <div class="rule-title">Neutralité médicale</div>
+              <div class="rule-desc">L'EMS est une zone neutre. Attaquer, menacer ou enlever un médecin en exercice est interdit. Les soignants ne peuvent être forcés à abandonner un patient, quelle que soit leur appartenance supposée.</div>
+            </div>
+            <span class="rule-badge badge-crit">Interdit</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">L06</div>
+            <div class="rule-content">
+              <div class="rule-title">Interventions sur scène active</div>
+              <div class="rule-desc">L'EMS peut intervenir sur une scène encore active uniquement si les forces de l'ordre ont sécurisé un périmètre. En cas de refus des soins en RP, cela doit être joué de façon cohérente par le joueur blessé.</div>
+            </div>
+            <span class="rule-badge badge-info">Protocole</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-chapter">
+        <div class="chapter-title">§ L3 — Vie civile & économie</div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">L07</div>
+            <div class="rule-content">
+              <div class="rule-title">Activités économiques</div>
+              <div class="rule-desc">Les entreprises légales (garages, restaurants, immobilier, etc.) doivent être gérées de façon RP cohérente. Le blanchiment d'argent illégal via une entreprise légale est possible mais doit être joué sérieusement.</div>
+            </div>
+            <span class="rule-badge badge-ok">Business</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">L08</div>
+            <div class="rule-content">
+              <div class="rule-title">Transactions & escroqueries</div>
+              <div class="rule-desc">Les arnaques légères entre joueurs sont autorisées si elles s'inscrivent dans un RP cohérent. Les vols de montants extrêmes ou répétés sur le même joueur sans justification narrative seront sanctionnés.</div>
+            </div>
+            <span class="rule-badge badge-warn">Encadré</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">L09</div>
+            <div class="rule-content">
+              <div class="rule-title">Véhicules & conduite</div>
+              <div class="rule-desc">La conduite doit respecter un minimum de réalisme. Les dérapages permanents, les roulades de véhicule volontaires répétées ou les collisions intentionnelles sans RP (VDM) sont sanctionnés.</div>
+            </div>
+            <span class="rule-badge badge-info">Conduite</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">L10</div>
+            <div class="rule-content">
+              <div class="rule-title">Propriétés & logements</div>
+              <div class="rule-desc">Chaque joueur peut posséder une résidence. L'intrusion dans une propriété privée sans consentement ou RP d'effraction valide est interdite. Les squats répétés seront considérés comme du harcèlement.</div>
+            </div>
+            <span class="rule-badge badge-ok">Propriété</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SECTION ILLÉGAL ─── -->
+  <div class="rule-section" id="section-illegal">
+    <div class="section-header">
+      <div class="section-eyebrow">Organisations & crime organisé</div>
+      <div class="section-title">RÈGLEMENT ILLÉGAL</div>
+      <div class="section-sub">Règles encadrant les activités criminelles, gangs et organisations illégales</div>
+    </div>
+
+    <div class="intro-band">
+      <p>Le côté illégal est au cœur de l'expérience Power. Ces règles garantissent un équilibre entre la liberté criminelle et la qualité du RP. <strong>Toute activité illégale doit être jouée avec sérieux et cohérence narrative.</strong> Le "kill on sight" sans contexte RP n'a pas sa place ici.</p>
+    </div>
+
+    <div class="rules-grid">
+      <div class="rule-chapter">
+        <div class="chapter-title">§ I1 — Gangs & organisations</div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">I01</div>
+            <div class="rule-content">
+              <div class="rule-title">Création d'une organisation</div>
+              <div class="rule-desc">Toute organisation criminelle doit être validée par le staff via un dossier soumis sur Discord (nom, background, hiérarchie, territoire, code de conduite). Un gang non validé ne peut revendiquer de territoire.</div>
+            </div>
+            <span class="rule-badge badge-warn">Validation</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">I02</div>
+            <div class="rule-content">
+              <div class="rule-title">Guerres de gangs & conflits</div>
+              <div class="rule-desc">Un conflit entre organisations doit avoir une cause RP justifiée et escaladée progressivement. Aucun KOS (Kill on Sight) général n'est autorisé sans déclaration de guerre RP officielle validée par le staff.</div>
+            </div>
+            <span class="rule-badge badge-crit">Encadré</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">I03</div>
+            <div class="rule-content">
+              <div class="rule-title">Limites des membres actifs</div>
+              <div class="rule-desc">Lors d'une opération criminelle organisée (braquage, guerre, embuscade), le nombre de participants est limité selon le type d'action. Ces limites sont définies dans les règles spécifiques aux événements.</div>
+            </div>
+            <span class="rule-badge badge-info">Limite</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">I04</div>
+            <div class="rule-content">
+              <div class="rule-title">Territoires & trafics</div>
+              <div class="rule-desc">Chaque organisation validée peut contrôler un territoire défini. L'empiètement sur un territoire adverse doit s'accompagner d'un RP de confrontation, pas d'une simple présence passive pour farm.</div>
+            </div>
+            <span class="rule-badge badge-warn">Territoire</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-chapter">
+        <div class="chapter-title">§ I2 — Braquages & opérations</div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">I05</div>
+            <div class="rule-content">
+              <div class="rule-title">Règles de braquage</div>
+              <div class="rule-desc">Un braquage doit comporter une phase de préparation RP, une justification narrative et un nombre de participants défini. Braquer un joueur sans aucun RP préalable (juste pour le contenu) est interdit.</div>
+            </div>
+            <span class="rule-badge badge-warn">Protocole</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">I06</div>
+            <div class="rule-content">
+              <div class="rule-title">Prises d'otages</div>
+              <div class="rule-desc">Toute prise d'otage doit être jouée sérieusement. L'otage doit être un joueur réel (pas un PNJ), la demande doit être cohérente et le RP doit se tenir jusqu'à résolution. Les fausses prises d'otages répétitives sont sanctionnées.</div>
+            </div>
+            <span class="rule-badge badge-crit">RP obligatoire</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">I07</div>
+            <div class="rule-content">
+              <div class="rule-title">Règles d'engagement</div>
+              <div class="rule-desc">Avant d'ouvrir le feu, un avertissement verbal clair doit être donné sauf situation d'urgence absolue (échange de tirs déjà en cours). Les executions de personnages désarmés et sans défense nécessitent un RP solide.</div>
+            </div>
+            <span class="rule-badge badge-warn">Important</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-chapter">
+        <div class="chapter-title">§ I3 — Trafics & économie noire</div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">I08</div>
+            <div class="rule-content">
+              <div class="rule-title">Trafic de drogues</div>
+              <div class="rule-desc">La production et vente de stupéfiants est permise dans les zones désignées. Elle doit s'accompagner d'un RP de dealer/client cohérent. Le simple farm sans interaction RP n'est pas toléré.</div>
+            </div>
+            <span class="rule-badge badge-ok">Autorisé</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">I09</div>
+            <div class="rule-content">
+              <div class="rule-title">Trafic d'armes</div>
+              <div class="rule-desc">Le commerce d'armes entre joueurs est soumis à un système de licences noires et doit se faire via des réseaux validés. Vendre des armes à des inconnus sans RP de connexion préalable expose à des sanctions.</div>
+            </div>
+            <span class="rule-badge badge-warn">Encadré</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">I10</div>
+            <div class="rule-content">
+              <div class="rule-title">Blanchiment d'argent</div>
+              <div class="rule-desc">Le blanchiment via des entreprises couvertes est autorisé et encouragé dans le cadre narratif. Cependant, les montants doivent rester réalistes par rapport à l'activité de couverture choisie.</div>
+            </div>
+            <span class="rule-badge badge-ok">Autorisé</span>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-header">
+            <div class="rule-num">I11</div>
+            <div class="rule-content">
+              <div class="rule-title">CK — Character Kill</div>
+              <div class="rule-desc">La mort définitive d'un personnage (CK) ne peut être imposée qu'avec le consentement du joueur concerné OU dans le cadre d'un RP de trahison grave validé par le staff. Un CK forcé non autorisé est une faute grave.</div>
+            </div>
+            <span class="rule-badge badge-crit">Staff requis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="color-divider"></div>
+
+</div><!-- /page-wrapper -->
+
+<footer class="site-footer">
+  <div class="footer-logo">
+    <img src="lPower.png" alt="Power">
+    <span class="footer-text">Power — GTA V Roleplay</span>
+  </div>
+  <div class="footer-right">© 2025 Power — Tous droits réservés</div>
+</footer>
+
+<img src="POWER_2.png" alt="" class="corner-logo" aria-hidden="true">
+
+<script>
+  const themes = {
+    main: { body: 'theme-main', navActive: 'active-main' },
+    legal: { body: 'theme-legal', navActive: 'active-legal' },
+    illegal: { body: 'theme-illegal', navActive: 'active-illegal' }
+  };
+
+  function switchSection(target) {
+    const body = document.body;
+
+    body.classList.remove('theme-main', 'theme-legal', 'theme-illegal');
+    if (target === 'garde') body.classList.add('theme-main');
+    else body.classList.add('theme-' + target);
+
+    document.querySelectorAll('.rule-section').forEach(s => s.classList.remove('active'));
+    document.getElementById('section-' + target).classList.add('active');
+
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.tab-' + target).classList.add('active');
+
+    const navGarde = document.getElementById('navGarde');
+    const navMain = document.getElementById('navMain');
+    const navLegal = document.getElementById('navLegal');
+    const navIllegal = document.getElementById('navIllegal');
+    navGarde.className = '';
+    navMain.className = '';
+    navLegal.className = '';
+    navIllegal.className = '';
+
+    if (target === 'garde') navGarde.className = 'active-garde';
+    if (target === 'main') navMain.className = 'active-main';
+    if (target === 'legal') navLegal.className = 'active-legal';
+    if (target === 'illegal') navIllegal.className = 'active-illegal';
+
+    const navLogoImg = document.getElementById('navLogo');
+    if (target === 'legal') navLogoImg.src = 'POWER_3.png';
+    else if (target === 'illegal') navLogoImg.src = 'lPower.png';
+    else navLogoImg.src = 'POWER_2.png';
+
+    document.querySelector('.section-tabs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Scroll progress bar
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = total > 0 ? (scrolled / total) * 100 : 0;
+    document.getElementById('scrollBar').style.width = pct + '%';
+  });
+</script>
+</body>
+</html>
