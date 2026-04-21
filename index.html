@@ -182,8 +182,12 @@
   }
 
   .dot-garde { background: #f0b429; box-shadow: 0 0 6px rgba(240,180,41,0.5); }
+  .dot-lore { background: #a78bfa; box-shadow: 0 0 6px rgba(167,139,250,0.5); }
+  .dot-gangmap { background: #f97316; box-shadow: 0 0 6px rgba(249,115,22,0.5); }
 
   .nav-links a.active-garde { color: #f0b429; border-color: rgba(240,180,41,0.4); background: rgba(240,180,41,0.08); }
+  .nav-links a.active-lore { color: #a78bfa; border-color: rgba(167,139,250,0.4); background: rgba(167,139,250,0.08); }
+  .nav-links a.active-gangmap { color: #f97316; border-color: rgba(249,115,22,0.4); background: rgba(249,115,22,0.08); }
 
   .dot-main { background: #fff; }
   .dot-legal { background: var(--legal-color); box-shadow: 0 0 6px var(--legal-glow); }
@@ -247,6 +251,12 @@
 
   .tab-btn.tab-garde.active { color: #f0b429; }
   .tab-btn.tab-garde.active::after { background: #f0b429; box-shadow: 0 0 12px rgba(240,180,41,0.5); }
+
+  .tab-btn.tab-lore.active { color: #a78bfa; }
+  .tab-btn.tab-lore.active::after { background: #a78bfa; box-shadow: 0 0 12px rgba(167,139,250,0.5); }
+
+  .tab-btn.tab-gangmap.active { color: #f97316; }
+  .tab-btn.tab-gangmap.active::after { background: #f97316; box-shadow: 0 0 12px rgba(249,115,22,0.5); }
 
   .tab-btn.tab-main.active { color: #fff; }
   .tab-btn.tab-main.active::after { background: #fff; box-shadow: 0 0 12px rgba(255,255,255,0.5); }
@@ -495,6 +505,183 @@
 
   .footer-right { font-size: 12px; color: rgba(100,100,100,0.6); }
 
+  /* ── SOUS-ONGLETS ILLÉGAL ── */
+  .illegal-subtabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+
+  .sub-tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: #101010;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: #555;
+    transition: all 0.3s ease;
+  }
+
+  .sub-tab-btn:hover { color: #aaa; border-color: rgba(255,255,255,0.2); background: #1a1a1a; }
+
+  .sub-tab-btn.sub-general.active { color: #fff; border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.07); box-shadow: 0 0 15px rgba(255,255,255,0.05); }
+  .sub-tab-btn.sub-set.active { color: #ff4d4d; border-color: rgba(255,77,77,0.5); background: rgba(255,77,77,0.07); box-shadow: 0 0 15px rgba(255,77,77,0.1); }
+  .sub-tab-btn.sub-mc.active { color: #ff8800; border-color: rgba(255,136,0,0.5); background: rgba(255,136,0,0.07); box-shadow: 0 0 15px rgba(255,136,0,0.1); }
+  .sub-tab-btn.sub-mob.active { color: #cc88ff; border-color: rgba(204,136,255,0.5); background: rgba(204,136,255,0.07); box-shadow: 0 0 15px rgba(204,136,255,0.1); }
+
+  .illegal-sub-content { display: none; animation: fadeIn 0.4s ease; }
+  .illegal-sub-content.active { display: block; }
+
+  /* ── BOUTIQUE CSS ── */
+  --gold: #f0b429;
+  --gold-glow: rgba(240,180,41,0.35);
+  --bg3: #161616;
+
+  /* ── SHOP SECTION WRAPPER ── */
+  .shop-wrapper { padding-top: 50px; }
+
+  .shop-cat-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(20px);
+  }
+
+  .shop-cat-tab {
+    flex: 1;
+    padding: 16px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    position: relative;
+    transition: color 0.3s;
+  }
+
+  .shop-cat-tab::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    height: 2px;
+    background: transparent;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+
+  .shop-cat-tab.active { color: #f0b429; }
+  .shop-cat-tab.active::after { background: #f0b429; box-shadow: 0 0 10px rgba(240,180,41,0.4); }
+
+  .shop-section { display:none; animation: fadeIn 0.4s ease; }
+  .shop-section.active { display:block; }
+
+  .sec-header { margin-bottom: 36px; }
+  .sec-title { font-family:'Bebas Neue',sans-serif; font-size:40px; letter-spacing:5px; color:#fff; }
+  .sec-title-accent { color: #f0b429; }
+  .sec-sub { font-size:13px; color:var(--muted); font-weight:300; margin-top:6px; letter-spacing:0.5px; }
+
+  /* grades */
+  .grades-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:16px; margin-bottom:50px; }
+  .grade-card { background:var(--bg2); border:1px solid var(--border); border-radius:4px; overflow:hidden; position:relative; transition:transform 0.2s, border-color 0.2s; }
+  .grade-card:hover { transform:translateY(-3px); }
+  .grade-card.tier-silver:hover { border-color:rgba(180,180,180,0.35); }
+  .grade-card.tier-gold:hover { border-color:rgba(240,180,41,0.5); }
+  .grade-card.tier-diamond:hover { border-color:rgba(110,180,255,0.5); }
+  .grade-card.tier-legend:hover { border-color:rgba(221,34,34,0.5); }
+  .grade-card-top { height:6px; }
+  .tier-silver .grade-card-top { background:#aaa; }
+  .tier-gold .grade-card-top { background:#f0b429; }
+  .tier-diamond .grade-card-top { background:#6eb4ff; }
+  .tier-legend .grade-card-top { background:var(--illegal-color); }
+  .grade-card-body { padding:22px; }
+  .grade-tier-badge { display:inline-flex; align-items:center; gap:5px; padding:3px 10px; border-radius:2px; font-family:'Rajdhani',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
+  .tier-silver .grade-tier-badge { background:rgba(180,180,180,0.1); color:#bbb; }
+  .tier-gold .grade-tier-badge { background:rgba(240,180,41,0.1); color:#f0b429; }
+  .tier-diamond .grade-tier-badge { background:rgba(110,180,255,0.1); color:#6eb4ff; }
+  .tier-legend .grade-tier-badge { background:rgba(221,34,34,0.1); color:var(--illegal-color); }
+  .grade-name { font-family:'Bebas Neue',sans-serif; font-size:26px; letter-spacing:3px; color:#fff; margin-bottom:14px; }
+  .grade-perks { list-style:none; display:flex; flex-direction:column; gap:7px; margin-bottom:20px; }
+  .grade-perks li { display:flex; align-items:flex-start; gap:8px; font-size:13px; color:#999; font-weight:300; line-height:1.5; }
+  .perk-dot { width:5px; height:5px; border-radius:50%; flex-shrink:0; margin-top:5px; }
+  .tier-silver .perk-dot { background:#aaa; }
+  .tier-gold .perk-dot { background:#f0b429; }
+  .tier-diamond .perk-dot { background:#6eb4ff; }
+  .tier-legend .perk-dot { background:var(--illegal-color); }
+  .grade-footer { display:flex; align-items:center; justify-content:space-between; padding-top:16px; border-top:1px solid var(--border); }
+  .grade-price { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:1px; }
+  .tier-silver .grade-price { color:#bbb; }
+  .tier-gold .grade-price { color:#f0b429; }
+  .tier-diamond .grade-price { color:#6eb4ff; }
+  .tier-legend .grade-price { color:var(--illegal-color); }
+  .grade-price-sub { font-size:11px; color:var(--muted); font-weight:300; letter-spacing:0.5px; }
+  .popular-badge { position:absolute; top:14px; right:14px; font-family:'Rajdhani',sans-serif; font-weight:700; font-size:9px; letter-spacing:2px; text-transform:uppercase; padding:3px 8px; border-radius:2px; background:rgba(240,180,41,0.15); color:#f0b429; border:1px solid rgba(240,180,41,0.3); }
+
+  /* buy btn */
+  .buy-btn { display:inline-flex; align-items:center; gap:6px; padding:9px 18px; border-radius:3px; font-family:'Rajdhani',sans-serif; font-weight:700; font-size:12px; letter-spacing:2px; text-transform:uppercase; text-decoration:none; cursor:pointer; border:1px solid; transition:all 0.2s; }
+  .tier-silver .buy-btn { color:#bbb; border-color:rgba(180,180,180,0.3); background:rgba(180,180,180,0.07); }
+  .tier-silver .buy-btn:hover { background:rgba(180,180,180,0.14); }
+  .tier-gold .buy-btn { color:#f0b429; border-color:rgba(240,180,41,0.35); background:rgba(240,180,41,0.07); }
+  .tier-gold .buy-btn:hover { background:rgba(240,180,41,0.15); }
+  .tier-diamond .buy-btn { color:#6eb4ff; border-color:rgba(110,180,255,0.35); background:rgba(110,180,255,0.07); }
+  .tier-diamond .buy-btn:hover { background:rgba(110,180,255,0.15); }
+  .tier-legend .buy-btn { color:var(--illegal-color); border-color:rgba(221,34,34,0.4); background:rgba(221,34,34,0.08); }
+  .tier-legend .buy-btn:hover { background:rgba(221,34,34,0.18); }
+  .buy-btn-red { color:var(--illegal-color); border-color:rgba(221,34,34,0.4); background:rgba(221,34,34,0.08); }
+  .buy-btn-red:hover { background:rgba(221,34,34,0.18); }
+
+  /* vehicles */
+  .vehicles-filter { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:30px; }
+  .filter-btn { padding:7px 16px; border-radius:3px; border:1px solid var(--border); background:none; color:var(--muted); font-family:'Rajdhani',sans-serif; font-weight:700; font-size:11px; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:all 0.2s; }
+  .filter-btn:hover { color:#fff; border-color:rgba(255,255,255,0.2); }
+  .filter-btn.active { color:var(--illegal-color); border-color:rgba(221,34,34,0.4); background:rgba(221,34,34,0.07); }
+  .vehicles-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:16px; }
+  .vehicle-card { background:var(--bg2); border:1px solid var(--border); border-radius:4px; overflow:hidden; transition:transform 0.2s, border-color 0.2s; }
+  .vehicle-card:hover { transform:translateY(-3px); border-color:rgba(221,34,34,0.35); }
+  .vehicle-img-area { height:150px; background:#161616; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+  .vehicle-silhouette { opacity:0.15; }
+  .vehicle-class-badge { position:absolute; top:10px; left:10px; font-family:'Rajdhani',sans-serif; font-weight:700; font-size:9px; letter-spacing:2px; text-transform:uppercase; padding:3px 8px; border-radius:2px; }
+  .class-sport { background:rgba(221,34,34,0.15); color:var(--illegal-color); border:1px solid rgba(221,34,34,0.3); }
+  .class-muscle { background:rgba(240,180,41,0.1); color:#f0b429; border:1px solid rgba(240,180,41,0.3); }
+  .class-super { background:rgba(110,180,255,0.1); color:#6eb4ff; border:1px solid rgba(110,180,255,0.3); }
+  .class-suv { background:rgba(0,200,100,0.1); color:#00c864; border:1px solid rgba(0,200,100,0.3); }
+  .class-moto { background:rgba(200,100,255,0.1); color:#c864ff; border:1px solid rgba(200,100,255,0.3); }
+  .vehicle-body { padding:18px; }
+  .vehicle-name { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:3px; color:#fff; margin-bottom:4px; }
+  .vehicle-model { font-size:12px; color:var(--muted); font-weight:300; margin-bottom:14px; letter-spacing:0.5px; }
+  .vehicle-stats { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:16px; }
+  .stat-label { font-size:10px; color:var(--muted); letter-spacing:1px; text-transform:uppercase; font-family:'Rajdhani',sans-serif; font-weight:600; margin-bottom:3px; }
+  .stat-bar { height:3px; background:#161616; border-radius:2px; overflow:hidden; }
+  .stat-fill { height:100%; border-radius:2px; background:var(--illegal-color); }
+  .vehicle-footer { display:flex; align-items:center; justify-content:space-between; padding-top:14px; border-top:1px solid var(--border); }
+  .vehicle-price { font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--illegal-color); letter-spacing:1px; }
+
+  .info-band-shop { margin-top:50px; padding:28px; border:1px solid var(--border); border-left:3px solid #f0b429; background:rgba(240,180,41,0.04); border-radius:0 4px 4px 0; }
+  .info-band-shop-title { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#f0b429; margin-bottom:10px; }
+  .info-band-shop p { font-size:13px; color:#888; line-height:1.8; font-weight:300; }
+  .info-band-shop strong { color:#ccc; font-weight:700; }
+
+  /* dot boutique */
+  .dot-boutique { background: #f0b429; box-shadow: 0 0 6px rgba(240,180,41,0.5); }
+  .nav-links a.active-boutique { color: #f0b429; border-color: rgba(240,180,41,0.4); background: rgba(240,180,41,0.08); }
+  .tab-btn.tab-boutique.active { color: #f0b429; }
+  .tab-btn.tab-boutique.active::after { background: #f0b429; box-shadow: 0 0 12px rgba(240,180,41,0.5); }
+
   /* ── SCROLL INDICATOR ── */
   .scroll-bar {
     position: fixed;
@@ -540,6 +727,15 @@
     <li><a href="#" id="navGarde" onclick="switchSection('garde');return false;">
       <span class="nav-dot dot-garde"></span> Accueil
     </a></li>
+    <li><a href="#" id="navBoutique" onclick="switchSection('boutique');return false;">
+      <span class="nav-dot dot-boutique"></span> Boutique
+    </a></li>
+    <li><a href="#" id="navLore" onclick="switchSection('lore');return false;">
+      <span class="nav-dot dot-lore"></span> Lore
+    </a></li>
+    <li><a href="#" id="navGangmap" onclick="switchSection('gangmap');return false;">
+      <span class="nav-dot dot-gangmap"></span> Gang Map
+    </a></li>
     <li><a href="#" class="active-main" id="navMain" onclick="switchSection('main');return false;">
       <span class="nav-dot dot-main"></span> Règlement principal
     </a></li>
@@ -568,6 +764,18 @@
       <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       Accueil
     </button>
+    <button class="tab-btn tab-boutique" onclick="switchSection('boutique')">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+      Boutique
+    </button>
+    <button class="tab-btn tab-lore" onclick="switchSection('lore')">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      Lore
+    </button>
+    <button class="tab-btn tab-gangmap" onclick="switchSection('gangmap')">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+      Gang Map
+    </button>
     <button class="tab-btn tab-main active" onclick="switchSection('main')">
       <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
       Règlement principal
@@ -577,9 +785,258 @@
       Règlement légal
     </button>
     <button class="tab-btn tab-illegal" onclick="switchSection('illegal')">
-      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h10M13 8h5l2 4-2 4h-5"/><path d="M3 8h3v8H3z"/><line x1="6" y1="10" x2="6" y2="14"/><circle cx="17" cy="16" r="1.5"/></svg>
       Règlement illégal
     </button>
+  </div>
+
+  <!-- ─── SECTION BOUTIQUE ─── -->
+  <div class="rule-section" id="section-boutique">
+    <div class="shop-wrapper">
+
+      <!-- Sous-onglets boutique -->
+      <div class="shop-cat-tabs">
+        <button class="shop-cat-tab active" id="shop-tab-grades" onclick="switchShopCat('grades')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Grades VIP
+        </button>
+        <button class="shop-cat-tab" id="shop-tab-vehicles" onclick="switchShopCat('vehicles')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          Véhicules
+        </button>
+      </div>
+
+      <!-- GRADES VIP -->
+      <div class="shop-section active" id="shop-section-grades">
+        <div class="sec-header">
+          <div class="sec-title">GRADES <span class="sec-title-accent">VIP</span></div>
+          <div class="sec-sub">Avantages exclusifs, accès prioritaire et fonctionnalités uniques en jeu</div>
+        </div>
+        <div class="grades-grid">
+          <div class="grade-card tier-silver">
+            <div class="grade-card-top"></div>
+            <div class="grade-card-body">
+              <div class="grade-tier-badge"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Tier I</div>
+              <div class="grade-name">SILVER</div>
+              <ul class="grade-perks">
+                <li><span class="perk-dot"></span>Accès prioritaire à la file d'attente</li>
+                <li><span class="perk-dot"></span>Tag [SILVER] sur le Discord</li>
+                <li><span class="perk-dot"></span>1 slot de personnage supplémentaire</li>
+                <li><span class="perk-dot"></span>Skin exclusif de téléphone</li>
+              </ul>
+              <div class="grade-footer">
+                <div><div class="grade-price">5€</div><div class="grade-price-sub">paiement unique</div></div>
+                <a href="https://tebex.io" class="buy-btn" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> Acheter</a>
+              </div>
+            </div>
+          </div>
+          <div class="grade-card tier-gold">
+            <div class="grade-card-top"></div>
+            <div class="popular-badge">Populaire</div>
+            <div class="grade-card-body">
+              <div class="grade-tier-badge"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Tier II</div>
+              <div class="grade-name">GOLD</div>
+              <ul class="grade-perks">
+                <li><span class="perk-dot"></span>Tout le contenu Silver inclus</li>
+                <li><span class="perk-dot"></span>Tag [GOLD] sur le Discord</li>
+                <li><span class="perk-dot"></span>Garage VIP avec 3 véhicules bonus</li>
+                <li><span class="perk-dot"></span>Appartement de luxe offert</li>
+                <li><span class="perk-dot"></span>Double XP le week-end</li>
+              </ul>
+              <div class="grade-footer">
+                <div><div class="grade-price">10€</div><div class="grade-price-sub">paiement unique</div></div>
+                <a href="https://tebex.io" class="buy-btn" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> Acheter</a>
+              </div>
+            </div>
+          </div>
+          <div class="grade-card tier-diamond">
+            <div class="grade-card-top"></div>
+            <div class="grade-card-body">
+              <div class="grade-tier-badge"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Tier III</div>
+              <div class="grade-name">DIAMOND</div>
+              <ul class="grade-perks">
+                <li><span class="perk-dot"></span>Tout le contenu Gold inclus</li>
+                <li><span class="perk-dot"></span>Tag [DIAMOND] sur le Discord</li>
+                <li><span class="perk-dot"></span>Accès aux zones VIP exclusives</li>
+                <li><span class="perk-dot"></span>Véhicule personnalisé avec plaque custom</li>
+                <li><span class="perk-dot"></span>Accès à des events privés Diamond</li>
+                <li><span class="perk-dot"></span>Business starter pack offert</li>
+              </ul>
+              <div class="grade-footer">
+                <div><div class="grade-price">20€</div><div class="grade-price-sub">paiement unique</div></div>
+                <a href="https://tebex.io" class="buy-btn" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> Acheter</a>
+              </div>
+            </div>
+          </div>
+          <div class="grade-card tier-legend">
+            <div class="grade-card-top"></div>
+            <div class="grade-card-body">
+              <div class="grade-tier-badge"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Tier IV</div>
+              <div class="grade-name">LEGEND</div>
+              <ul class="grade-perks">
+                <li><span class="perk-dot"></span>Tout le contenu Diamond inclus</li>
+                <li><span class="perk-dot"></span>Tag [LEGEND] animé sur Discord</li>
+                <li><span class="perk-dot"></span>Accès whitelist prioritaire permanent</li>
+                <li><span class="perk-dot"></span>Nom dans les crédits du serveur</li>
+                <li><span class="perk-dot"></span>Véhicule Legend exclusif introuvable</li>
+                <li><span class="perk-dot"></span>Contact direct avec le staff</li>
+              </ul>
+              <div class="grade-footer">
+                <div><div class="grade-price">35€</div><div class="grade-price-sub">paiement unique</div></div>
+                <a href="https://tebex.io" class="buy-btn" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> Acheter</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="info-band-shop">
+          <div class="info-band-shop-title">Information importante</div>
+          <p>Les grades VIP sont <strong>permanents</strong> et liés à votre compte. Tout achat est définitif et ne peut être remboursé. Les avantages sont actifs sous <strong>24h maximum</strong> après validation du paiement. En cas de problème, ouvrez un ticket sur notre Discord.</p>
+        </div>
+      </div>
+
+      <!-- VÉHICULES -->
+      <div class="shop-section" id="shop-section-vehicles">
+        <div class="sec-header">
+          <div class="sec-title">VÉHICULES <span class="sec-title-accent">EXCLUSIFS</span></div>
+          <div class="sec-sub">Véhicules premium disponibles uniquement via la boutique</div>
+        </div>
+        <div class="vehicles-filter">
+          <button class="filter-btn active" onclick="filterVehicles('all', this)">Tous</button>
+          <button class="filter-btn" onclick="filterVehicles('sport', this)">Sport</button>
+          <button class="filter-btn" onclick="filterVehicles('super', this)">Super</button>
+          <button class="filter-btn" onclick="filterVehicles('muscle', this)">Muscle</button>
+          <button class="filter-btn" onclick="filterVehicles('suv', this)">SUV</button>
+          <button class="filter-btn" onclick="filterVehicles('moto', this)">Moto</button>
+        </div>
+        <div class="vehicles-grid">
+          <div class="vehicle-card" data-class="sport">
+            <div class="vehicle-img-area">
+              <svg class="vehicle-silhouette" width="200" height="80" viewBox="0 0 200 80" fill="white"><path d="M20 55 Q30 30 60 25 Q90 20 100 22 Q130 18 160 28 Q175 32 180 45 L185 55 Q165 52 150 55 Q120 52 100 55 Q70 52 50 55 Q35 52 20 55Z"/><ellipse cx="50" cy="57" rx="12" ry="12" fill="white"/><ellipse cx="155" cy="57" rx="12" ry="12" fill="white"/></svg>
+              <div class="vehicle-class-badge class-sport">Sport</div>
+            </div>
+            <div class="vehicle-body">
+              <div class="vehicle-name">SULTAN RS</div>
+              <div class="vehicle-model">Karin Sultan RS Custom</div>
+              <div class="vehicle-stats">
+                <div class="stat-item"><div class="stat-label">Vitesse</div><div class="stat-bar"><div class="stat-fill" style="width:82%"></div></div></div>
+                <div class="stat-item"><div class="stat-label">Accél.</div><div class="stat-bar"><div class="stat-fill" style="width:78%"></div></div></div>
+                <div class="stat-item"><div class="stat-label">Tenue route</div><div class="stat-bar"><div class="stat-fill" style="width:88%"></div></div></div>
+                <div class="stat-item"><div class="stat-label">Freinage</div><div class="stat-bar"><div class="stat-fill" style="width:75%"></div></div></div>
+              </div>
+              <div class="vehicle-footer"><div class="vehicle-price">15€</div><a href="https://tebex.io" class="buy-btn buy-btn-red" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> Acheter</a></div>
+            </div>
+          </div>
+          <div class="vehicle-card" data-class="super">
+            <div class="vehicle-img-area">
+              <svg class="vehicle-silhouette" width="200" height="80" viewBox="0 0 200 80" fill="white"><path d="M15 55 Q25 28 55 22 Q85 16 100 18 Q130 14 165 26 Q178 30 183 45 L188 55 Q168 51 150 55 Q120 51 100 55 Q70 51 50 55 Q30 51 15 55Z"/><ellipse cx="48" cy="57" rx="11" ry="11" fill="white"/><ellipse cx="153" cy="57" rx="11" ry="11" fill="white"/></svg>
+              <div class="vehicle-class-badge class-super">Super</div>
+            </div>
+            <div class="vehicle-body">
+              <div class="vehicle-name">ZENTORNO</div>
+              <div class="vehicle-model">Pegassi Zentorno</div>
+              <div class="vehicle-stats">
+                <div class="stat-item"><div class="stat-label">Vitesse</div><div class="stat-bar"><div class="stat-fill" style="width:96%"></div></div></div>
+                <div class="stat-item"><div class="stat-label">Accél.</div><div class="stat-bar"><div class="stat-fill" style="width:93%"></div></div></div>
+                <div class="stat-item"><div class="stat-label">Tenue route</div><div class="stat-bar"><div class="stat-fill" style="width:85%"></div></div></div>
+                <div class="stat-item"><div class="stat-label">Freinage</div><div class="stat-bar"><div class="stat-fill" style="width:90%"></div></div></div>
+              </div>
+              <div class="vehicle-footer"><div class="vehicle-price">25€</div><a href="https://tebex.io" class="buy-btn buy-btn-red" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> Acheter</a></div>
+            </div>
+          </div>
+          <div class="vehicle-card" data-class="muscle">
+            <div class="vehicle-img-area">
+              <svg class="vehicle-silhouette" width="200" height="80" viewBox="0 0 200 80" fill="white"><path d="M18 55 Q28 32 58 26 Q88 20 100 22 Q128 20 158 30 Q172 35 178 48 L182 55 Q162 52 148 55 Q118 52 100 55 Q72 52 52 55 Q33 52 18 55Z"/><ellipse cx="52" cy="57" rx="13" ry="13" fill="white"/><ellipse cx="148" cy="57" rx="13" ry="13" fill="white"/></svg>
+              <div class="vehicle-class-badge class-muscle">Muscle</div>
+            </div>
+            <div class="vehicle-body">
+              <div class="vehicle-name">GAUNTLET</div>
+              <div class="vehicle-model">Vapid Gauntlet Hellfire</div>
+              <div class="vehicle-stats">
+                <div class="stat-item"><div class="stat-label">Vitesse</div><div class="stat-bar"><div class="stat-fill" style="width:88%"></div></div></div>
+                <div class="stat-item"><div class="stat-label">Accél.</div><div class="stat-bar"><div class="stat-fill" style="width:91%"></div></div></div>
+                <div class="stat-item"><div class="stat-label">Tenue route</div><div class="stat-bar"><div class="stat-fill" style="width:68%"></div></div></div>
+                <div class="stat-item"><div class="stat-label">Freinage</div><div class="stat-bar"><div class="stat-fill" style="width:72%"></div></div></div>
+              </div>
+              <div class="vehicle-footer"><div class="vehicle-price">18€</div><a href="https://tebex.io" class="buy-btn buy-btn-red" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> Acheter</a></div>
+            </div>
+          </div>
+          <div class="vehicle-card" data-class="suv">
+            <div class="vehicle-img-area">
+              <svg class="vehicle-silhouette" width="200" height="80" viewBox="0 0 200 80" fill="white"><path d="M16 55 Q20 22 55 18 Q85 15 100 17 Q130 15 160 20 Q178 24 182 45 L185 55 Q165 51 150 55 Q120 51 100 55 Q70 51 50 55 Q30 51 16 55Z"/><ellipse cx="50" cy="57" rx="13" ry="13" fill="white"/><ellipse cx="152" cy="57" rx="13" ry="13" fill="white"/></svg>
+              <div class="vehicle-class-badge class-suv">SUV</div>
+            </div>
+            <div class="vehicle-body">
+              <div class="vehicle-name">URUS</div>
+              <div class="vehicle-model">Lamborghini Urus Custom</div>
+              <div class="vehicle-stats">
+                <div class="stat-item"><div class="stat-label">Vitesse</div><div class="stat-bar"><div class="stat-fill" style="width:79%"></div></div></div>
+                <div class="stat-item"><div class="stat-label">Accél.</div><div class="stat-bar"><div class="stat-fill" style="width:84%"></div></div></div>
+                <div class="stat-item"><div class="stat-label">Tenue route</div><div class="stat-bar"><div class="stat-fill" style="width:80%"></div></div></div>
+                <div class="stat-item"><div class="stat-label">Freinage</div><div class="stat-bar"><div class="stat-fill" style="width:82%"></div></div></div>
+              </div>
+              <div class="vehicle-footer"><div class="vehicle-price">20€</div><a href="https://tebex.io" class="buy-btn buy-btn-red" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> Acheter</a></div>
+            </div>
+          </div>
+          <div class="vehicle-card" data-class="moto">
+            <div class="vehicle-img-area">
+              <svg class="vehicle-silhouette" width="200" height="80" viewBox="0 0 200 80" fill="white"><ellipse cx="60" cy="55" rx="20" ry="20" fill="none" stroke="white" stroke-width="6"/><ellipse cx="145" cy="55" rx="20" ry="20" fill="none" stroke="white" stroke-width="6"/><path d="M60 35 Q80 20 100 22 Q120 24 145 35" stroke="white" stroke-width="6" fill="none"/><rect x="90" y="22" width="20" height="12" rx="3" fill="white"/></svg>
+              <div class="vehicle-class-badge class-moto">Moto</div>
+            </div>
+            <div class="vehicle-body">
+              <div class="vehicle-name">HAKUCHOU</div>
+              <div class="vehicle-model">Shitzu Hakuchou Drag</div>
+              <div class="vehicle-stats">
+                <div class="stat-item"><div class="stat-label">Vitesse</div><div class="stat-bar"><div class="stat-fill" style="width:98%"></div></div></div>
+                <div class="stat-item"><div class="stat-label">Accél.</div><div class="stat-bar"><div class="stat-fill" style="width:95%"></div></div></div>
+                <div class="stat-item"><div class="stat-label">Tenue route</div><div class="stat-bar"><div class="stat-fill" style="width:60%"></div></div></div>
+                <div class="stat-item"><div class="stat-label">Freinage</div><div class="stat-bar"><div class="stat-fill" style="width:65%"></div></div></div>
+              </div>
+              <div class="vehicle-footer"><div class="vehicle-price">12€</div><a href="https://tebex.io" class="buy-btn buy-btn-red" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> Acheter</a></div>
+            </div>
+          </div>
+          <div class="vehicle-card" data-class="super">
+            <div class="vehicle-img-area">
+              <svg class="vehicle-silhouette" width="200" height="80" viewBox="0 0 200 80" fill="white"><path d="M10 56 Q22 26 55 20 Q85 14 100 16 Q130 12 168 24 Q182 30 186 48 L190 56 Q170 52 152 56 Q120 52 100 56 Q70 52 48 56 Q26 52 10 56Z"/><ellipse cx="48" cy="58" rx="11" ry="11" fill="white"/><ellipse cx="152" cy="58" rx="11" ry="11" fill="white"/></svg>
+              <div class="vehicle-class-badge class-super">Super</div>
+            </div>
+            <div class="vehicle-body">
+              <div class="vehicle-name">OSIRIS</div>
+              <div class="vehicle-model">Pegassi Osiris</div>
+              <div class="vehicle-stats">
+                <div class="stat-item"><div class="stat-label">Vitesse</div><div class="stat-bar"><div class="stat-fill" style="width:94%"></div></div></div>
+                <div class="stat-item"><div class="stat-label">Accél.</div><div class="stat-bar"><div class="stat-fill" style="width:90%"></div></div></div>
+                <div class="stat-item"><div class="stat-label">Tenue route</div><div class="stat-bar"><div class="stat-fill" style="width:88%"></div></div></div>
+                <div class="stat-item"><div class="stat-label">Freinage</div><div class="stat-bar"><div class="stat-fill" style="width:87%"></div></div></div>
+              </div>
+              <div class="vehicle-footer"><div class="vehicle-price">28€</div><a href="https://tebex.io" class="buy-btn buy-btn-red" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> Acheter</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="info-band-shop">
+          <div class="info-band-shop-title">Information importante</div>
+          <p>Les véhicules achetés sont livrés <strong>directement dans votre garage</strong> en jeu sous 24h. Ils sont liés à votre personnage et ne peuvent pas être transférés. En cas de perte suite à un bug, ouvrez un ticket Discord avec votre preuve d'achat.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── SECTION LORE ─── -->
+  <div class="rule-section" id="section-lore">
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:400px;gap:20px;opacity:0.4;">
+      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:6px;color:#a78bfa;">LORE</div>
+      <div style="font-family:'Rajdhani',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#666;">Contenu à venir</div>
+    </div>
+  </div>
+
+  <!-- ─── SECTION GANG MAP ─── -->
+  <div class="rule-section" id="section-gangmap">
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:400px;gap:20px;opacity:0.4;">
+      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.5"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:6px;color:#f97316;">GANG MAP</div>
+      <div style="font-family:'Rajdhani',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#666;">Contenu à venir</div>
+    </div>
   </div>
 
   <!-- ─── SECTION GARDE ─── -->
@@ -663,170 +1120,203 @@
   <div class="rule-section active" id="section-main">
     <div class="section-header">
       <div class="section-eyebrow">Power — Serveur GTA V</div>
-      <div class="section-title">RÈGLEMENT PRINCIPAL</div>
+      <div class="section-title">RÈGLEMENT GLOBAL POWER</div>
       <div class="section-sub">Règles fondamentales applicables à tous les joueurs sans exception</div>
     </div>
 
-    <div class="intro-band">
-      <p>Bienvenue sur <strong>Power</strong>. Ce règlement est obligatoire et constitue la base de toute expérience de jeu sur notre serveur. Le non-respect de ces règles peut entraîner des sanctions allant du simple avertissement au ban permanent. <strong>L'ignorance du règlement ne constitue pas une excuse.</strong></p>
-    </div>
-
     <div class="rules-grid">
-      <div class="rule-chapter">
-        <div class="chapter-title">§ 01 — Comportement général</div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">01</div>
-            <div class="rule-content">
-              <div class="rule-title">Respect entre joueurs</div>
-              <div class="rule-desc">Tout joueur doit faire preuve de respect envers les autres membres de la communauté, que ce soit en jeu, sur Discord ou sur tout autre support lié au serveur. Les insultes, le harcèlement et la discrimination sont strictement interdits.</div>
-            </div>
-            <span class="rule-badge badge-crit">Obligatoire</span>
+
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">01</div>
+          <div class="rule-content">
+            <div class="rule-title">Powergaming</div>
+            <div class="rule-desc">Le powergaming consiste à faire quelque chose qui serait <strong>impossible à réaliser dans la vie réelle</strong>. Cela consiste également à s'octroyer une sorte d'avantage et donc forcer les choses en sa faveur sans donner aucune chance à la partie adverse. Les interactions avec l'univers qui vous entourent doivent rester au plus proche de la réalité.<br><br><em>Exemple : Lorsque vous prenez un obstacle à grande vitesse, jouez la scène d'accident comme elle se doit. Même chose quand on vous tape ou tire dessus, jouez la douleur comme si elle était réelle.</em></div>
           </div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">02</div>
-            <div class="rule-content">
-              <div class="rule-title">Toxicité & harcèlement</div>
-              <div class="rule-desc">Tout comportement toxique, harcèlement répété ou acharnement sur un joueur est passible d'un ban. Cela inclut les menaces hors-RP, la mise en doute de l'équipe d'administration de manière publique et injustifiée.</div>
-            </div>
-            <span class="rule-badge badge-crit">Ban</span>
-          </div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">03</div>
-            <div class="rule-content">
-              <div class="rule-title">Langue de communication</div>
-              <div class="rule-desc">La langue officielle du serveur est le français. L'utilisation d'autres langues dans les canaux publics est tolérée ponctuellement mais le français reste de rigueur pour tout échange avec le staff.</div>
-            </div>
-            <span class="rule-badge badge-info">Info</span>
-          </div>
+          <span class="rule-badge badge-crit">Interdit</span>
         </div>
       </div>
 
-      <div class="rule-chapter">
-        <div class="chapter-title">§ 02 — Règles de roleplay</div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">04</div>
-            <div class="rule-content">
-              <div class="rule-title">Rester dans le personnage (RP)</div>
-              <div class="rule-desc">Vous devez incarner votre personnage en toute circonstance sur le serveur. Sortir du RP sans raison valable (break RP) est sanctionné. Les discussions hors-RP se font uniquement via les canaux Discord appropriés.</div>
-            </div>
-            <span class="rule-badge badge-warn">Important</span>
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">02</div>
+          <div class="rule-content">
+            <div class="rule-title">Metagaming</div>
+            <div class="rule-desc">Utiliser des informations HRP (Hors-RP/Hors-Jeu) dans un contexte RP (En-Jeu) est strictement interdit. Inciter quelqu'un à metagame est aussi interdit. Cela inclut des informations que les autres joueurs n'ont aucune raison de connaître sur Discord ou autres.<br><br><em>Exemple : votre ami vous dit que le gars derrière vous vend du cannabis, vous devez faire comme s'il n'avait rien dit, car sinon cela serait du metagame vu que vous utiliserez des informations obtenues de manière HRP dans un contexte RP.</em></div>
           </div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">05</div>
-            <div class="rule-content">
-              <div class="rule-title">Metagaming</div>
-              <div class="rule-desc">L'utilisation d'informations obtenues hors-RP (Discord, stream, amis, etc.) pour influencer des actions en jeu est strictement interdite. Votre personnage ne sait que ce qu'il a vécu in-game.</div>
-            </div>
-            <span class="rule-badge badge-crit">Ban</span>
-          </div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">06</div>
-            <div class="rule-content">
-              <div class="rule-title">Powergaming</div>
-              <div class="rule-desc">Forcer des actions sur d'autres joueurs, accomplir des actes irréalistes ou utiliser des mécaniques de jeu de façon abusive pour prendre l'avantage est interdit. Le RP doit rester cohérent et réaliste.</div>
-            </div>
-            <span class="rule-badge badge-crit">Ban</span>
-          </div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">07</div>
-            <div class="rule-content">
-              <div class="rule-title">Value of Life (VDL)</div>
-              <div class="rule-desc">Votre personnage doit valoriser sa propre vie. Vous ne pouvez pas vous jeter sur des armes pointées vers vous, ignorer les menaces crédibles ou agir de façon suicidaire sans justification RP solide.</div>
-            </div>
-            <span class="rule-badge badge-warn">Important</span>
-          </div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">08</div>
-            <div class="rule-content">
-              <div class="rule-title">NLR — New Life Rule</div>
-              <div class="rule-desc">Après une mort RP (CK accepté ou réveil à l'hôpital), votre personnage ne se souvient pas des événements ayant conduit à sa mort. Retourner sur le lieu de son décès ou se venger immédiatement est interdit.</div>
-            </div>
-            <span class="rule-badge badge-warn">Important</span>
-          </div>
+          <span class="rule-badge badge-crit">Interdit</span>
         </div>
       </div>
 
-      <div class="rule-chapter">
-        <div class="chapter-title">§ 03 — Règles techniques</div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">09</div>
-            <div class="rule-content">
-              <div class="rule-title">Cheats & modifications interdites</div>
-              <div class="rule-desc">L'utilisation de cheats, trainers, scripts de triche ou toute modification offrant un avantage non légitime est passible d'un ban permanent sans appel. Cela inclut les exploits de bugs connus.</div>
-            </div>
-            <span class="rule-badge badge-crit">Ban perm</span>
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">03</div>
+          <div class="rule-content">
+            <div class="rule-title">Fear RP</div>
+            <div class="rule-desc">Il s'agit simplement du fait d'avoir peur en RP, non pas parce que vous, joueur, avez peur ou non, mais parce que votre personnage peut avoir à la ressentir lors de certaines situations. Le NoFear RP n'est pas toléré, vous ne pouvez pas rester de marbre quelle que soit la situation.</div>
           </div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">10</div>
-            <div class="rule-content">
-              <div class="rule-title">Exploitation de bugs</div>
-              <div class="rule-desc">Tout bug découvert doit être signalé au staff via le Discord officiel. En exploiter un à des fins personnelles ou pour nuire à d'autres joueurs entraîne une sanction sévère.</div>
-            </div>
-            <span class="rule-badge badge-crit">Ban</span>
-          </div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">11</div>
-            <div class="rule-content">
-              <div class="rule-title">Connexions & stabilité</div>
-              <div class="rule-desc">Se déconnecter intentionnellement pour éviter une arrestation, une mort RP ou toute conséquence en jeu (combat log) est interdit. Des problèmes techniques récurrents doivent être signalés au staff.</div>
-            </div>
-            <span class="rule-badge badge-warn">Important</span>
-          </div>
+          <span class="rule-badge badge-warn">Obligatoire</span>
         </div>
       </div>
 
-      <div class="rule-chapter">
-        <div class="chapter-title">§ 04 — Administration</div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">12</div>
-            <div class="rule-content">
-              <div class="rule-title">Respect du staff</div>
-              <div class="rule-desc">Les décisions du staff sont finales sauf recours officiel via le Discord. Argumenter une sanction en jeu, ignorer un staff ou tenter de le contourner aggrave la situation.</div>
-            </div>
-            <span class="rule-badge badge-warn">Important</span>
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">04</div>
+          <div class="rule-content">
+            <div class="rule-title">Mass RP</div>
+            <div class="rule-desc">Il s'agit du fait de prendre en compte la population de la ville et non du serveur. Si un joueur policier est seul connecté, cela ne veut pas dire que le commissariat est vide, tout comme pour un quartier de gang, ou qu'il n'y a pas qu'un seul exemplaire d'un modèle de véhicule en ville. Chaque PNJ doit être considéré comme un être vivant tout comme un joueur. Le Mass RP doit être joué.</div>
           </div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">13</div>
-            <div class="rule-content">
-              <div class="rule-title">Création du personnage</div>
-              <div class="rule-desc">Chaque personnage doit avoir un nom réaliste (prénom + nom), un background cohérent et une apparence adaptée. Les noms de célébrités, de personnages fictifs connus ou absurdes sont refusés.</div>
-            </div>
-            <span class="rule-badge badge-info">Whitelist</span>
-          </div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">14</div>
-            <div class="rule-content">
-              <div class="rule-title">Appels à témoin & plaintes</div>
-              <div class="rule-desc">Tout signalement de comportement abusif doit être effectué via un ticket Discord, avec preuves à l'appui (screenshots, vidéos). Les accusations non fondées publiques seront sanctionnées.</div>
-            </div>
-            <span class="rule-badge badge-info">Ticket</span>
-          </div>
+          <span class="rule-badge badge-warn">Obligatoire</span>
         </div>
       </div>
+
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">05</div>
+          <div class="rule-content">
+            <div class="rule-title">Carkill</div>
+            <div class="rule-desc">Le carkill consiste à écraser volontairement un joueur sans raison valable. Il est strictement interdit.</div>
+          </div>
+          <span class="rule-badge badge-crit">Interdit</span>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">06</div>
+          <div class="rule-content">
+            <div class="rule-title">Cohérence RP</div>
+            <div class="rule-desc">La cohérence RP consiste à incarner pleinement votre personnage en respectant son background, y compris dans vos actions. Merci de respecter votre cohérence pour assurer un plateau de jeu équitable pour tout le monde.</div>
+          </div>
+          <span class="rule-badge badge-warn">Important</span>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">07</div>
+          <div class="rule-content">
+            <div class="rule-title">Freekill</div>
+            <div class="rule-desc">Le freekill est le fait de tuer quelqu'un sans un réel motif roleplay. Ceci est complètement interdit. On ne tue pas une personne parce qu'elle nous a insulté ou regardé de travers. Déclarer une rébellion n'est pas une raison pour tuer tout le monde, même si cela concerne la police.</div>
+          </div>
+          <span class="rule-badge badge-crit">Interdit</span>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">08</div>
+          <div class="rule-content">
+            <div class="rule-title">RP sexe</div>
+            <div class="rule-desc">Tout RP mettant en scène un rapport sexuel entre membres dans un lieu public ou privé est passible d'un ban permanent.</div>
+          </div>
+          <span class="rule-badge badge-crit">Ban permanent</span>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">09</div>
+          <div class="rule-content">
+            <div class="rule-title">Coma</div>
+            <div class="rule-desc">Quelle que soit la raison du coma (blessure par balle, poing, famine, soif), les règles suivantes s'appliquent :<br><br>
+            • Sur une prise d'otage ou un braquage, une fois dans le coma et si aucune réanimation n'a pu être faite, ne revenez pas sur les lieux avant <strong>minimum 10 minutes</strong>.<br>
+            • Lorsque vous êtes dans le coma, vous n'avez plus la capacité de parler.<br>
+            • Si vous êtes réanimé par un médecin : vous perdez la mémoire sur les <strong>10 minutes précédant le coma</strong>.<br>
+            • Si vous vous réveillez à l'hôpital : vous oubliez les <strong>2 dernières heures</strong> de la scène vous ayant mené au coma. Vous êtes simplement conscient des blessures que vous avez (impact de balle, bosse sur la tête...).</div>
+          </div>
+          <span class="rule-badge badge-warn">Important</span>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">10</div>
+          <div class="rule-content">
+            <div class="rule-title">Corps Coma</div>
+            <div class="rule-desc">Seuls les EMS ont l'autorisation de déplacer les corps des joueurs en situation de coma. Vous ne devez donc <strong>jamais porter de corps</strong> peu importe où il se trouve.</div>
+          </div>
+          <span class="rule-badge badge-crit">Interdit</span>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">11</div>
+          <div class="rule-content">
+            <div class="rule-title">Refus de soin / réanimation</div>
+            <div class="rule-desc">Étant EMS, vous êtes dans l'obligation de soigner/réanimer un membre, peu importe son comportement. Si vous êtes victime de trash/troll ou autre, vous pouvez contacter le support staff.</div>
+          </div>
+          <span class="rule-badge badge-ok">EMS</span>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">12</div>
+          <div class="rule-content">
+            <div class="rule-title">La tenue (Police)</div>
+            <div class="rule-desc">Il est interdit de voler un équipement d'un agent des forces de l'ordre (tenue, gilet par balle, arme, munitions, véhicule...) sauf autorisation pour une scène.</div>
+          </div>
+          <span class="rule-badge badge-crit">Interdit</span>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">13</div>
+          <div class="rule-content">
+            <div class="rule-title">Prise d'otage</div>
+            <div class="rule-desc">Il est interdit de prendre en otage des agents des forces de l'ordre sans raison. Il doit y avoir une scène RP qui prouve que votre prise d'otage est légitime. Le nombre de braqueurs doit être cohérent avec le nombre de policiers (plus de braqueurs que de policiers). Toute prise d'otage engagée sur agents des forces de l'ordre doit être assumée.</div>
+          </div>
+          <span class="rule-badge badge-warn">Encadré</span>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">14</div>
+          <div class="rule-content">
+            <div class="rule-title">Fear Police</div>
+            <div class="rule-desc">Un criminel doit se faire discret aux yeux de la police, et doit comprendre que toute action malsaine envers un agent des forces de l'ordre entraînera fatalement des retombées énormes sur lui-même et sur son groupe jusqu'à la fin de la scène, et peut mener à une mort RP.</div>
+          </div>
+          <span class="rule-badge badge-warn">Important</span>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">15</div>
+          <div class="rule-content">
+            <div class="rule-title">Spam taser</div>
+            <div class="rule-desc">Vous devez utiliser votre taser avec sérieux et de manière légitime (ex : individu agité, qui n'écoute pas les sommations). Il est en revanche interdit de taser une personne plusieurs fois d'affilée. L'utilisation de celui-ci doit être limitée au maximum.</div>
+          </div>
+          <span class="rule-badge badge-crit">Interdit</span>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">16</div>
+          <div class="rule-content">
+            <div class="rule-title">Règlement de compte</div>
+            <div class="rule-desc">Lors d'un règlement de compte entre deux groupes, la police est dans l'obligation de montrer seulement sa présence. Vous n'avez pas le droit d'intervenir ou tirer sur les membres si la fusillade n'est pas terminée.</div>
+          </div>
+          <span class="rule-badge badge-info">Police</span>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">17</div>
+          <div class="rule-content">
+            <div class="rule-title">Course poursuite</div>
+            <div class="rule-desc">Toutes courses poursuites engagées avec les forces de l'ordre doivent être RP. Pas de sauts au-dessus de murets, pas de jump d'un pont etc.<br><br>Lors d'une chasse, les plans pneus, l'offroad et les prises d'otage sur policier sont <strong>interdits avant 15 minutes</strong>.</div>
+          </div>
+          <span class="rule-badge badge-warn">Important</span>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -965,133 +1455,183 @@
       <div class="section-sub">Règles encadrant les activités criminelles, gangs et organisations illégales</div>
     </div>
 
-    <div class="intro-band">
-      <p>Le côté illégal est au cœur de l'expérience Power. Ces règles garantissent un équilibre entre la liberté criminelle et la qualité du RP. <strong>Toute activité illégale doit être jouée avec sérieux et cohérence narrative.</strong> Le "kill on sight" sans contexte RP n'a pas sa place ici.</p>
+    <!-- Sous-onglets -->
+    <div class="illegal-subtabs">
+      <button class="sub-tab-btn sub-general active" onclick="switchIllegalSub('general')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Règlement général
+      </button>
+      <button class="sub-tab-btn sub-mob" onclick="switchIllegalSub('mob')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h10M13 8h5l2 4-2 4h-5"/><path d="M3 8h3v8H3z"/><line x1="6" y1="10" x2="6" y2="14"/><circle cx="17" cy="16" r="1.5"/></svg>
+        Règlement MOB
+      </button>
+      <button class="sub-tab-btn sub-mc" onclick="switchIllegalSub('mc')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3C7 3 3 7.5 3 12v2h1l1 2h12l1-2h1v-2c0-4.5-4-9-7-9z"/><path d="M3 14c0 1 .5 2 1.5 2.5"/><path d="M21 14c0 1-.5 2-1.5 2.5"/><line x1="8" y1="19" x2="16" y2="19"/></svg>
+        Règlement MC
+      </button>
+      <button class="sub-tab-btn sub-set" onclick="switchIllegalSub('set')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8c0 0 4-4 9-4s9 4 9 4"/><path d="M3 8c2 5 5 8 9 8s7-3 9-8"/><path d="M7 14c1 2 2.5 3 5 3s4-1 5-3"/><line x1="3" y1="8" x2="2" y2="13"/><line x1="21" y1="8" x2="22" y2="13"/></svg>
+        Règlement SET
+      </button>
     </div>
 
-    <div class="rules-grid">
-      <div class="rule-chapter">
-        <div class="chapter-title">§ I1 — Gangs & organisations</div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">I01</div>
-            <div class="rule-content">
-              <div class="rule-title">Création d'une organisation</div>
-              <div class="rule-desc">Toute organisation criminelle doit être validée par le staff via un dossier soumis sur Discord (nom, background, hiérarchie, territoire, code de conduite). Un gang non validé ne peut revendiquer de territoire.</div>
-            </div>
-            <span class="rule-badge badge-warn">Validation</span>
-          </div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">I02</div>
-            <div class="rule-content">
-              <div class="rule-title">Guerres de gangs & conflits</div>
-              <div class="rule-desc">Un conflit entre organisations doit avoir une cause RP justifiée et escaladée progressivement. Aucun KOS (Kill on Sight) général n'est autorisé sans déclaration de guerre RP officielle validée par le staff.</div>
-            </div>
-            <span class="rule-badge badge-crit">Encadré</span>
-          </div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">I03</div>
-            <div class="rule-content">
-              <div class="rule-title">Limites des membres actifs</div>
-              <div class="rule-desc">Lors d'une opération criminelle organisée (braquage, guerre, embuscade), le nombre de participants est limité selon le type d'action. Ces limites sont définies dans les règles spécifiques aux événements.</div>
-            </div>
-            <span class="rule-badge badge-info">Limite</span>
-          </div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">I04</div>
-            <div class="rule-content">
-              <div class="rule-title">Territoires & trafics</div>
-              <div class="rule-desc">Chaque organisation validée peut contrôler un territoire défini. L'empiètement sur un territoire adverse doit s'accompagner d'un RP de confrontation, pas d'une simple présence passive pour farm.</div>
-            </div>
-            <span class="rule-badge badge-warn">Territoire</span>
-          </div>
-        </div>
+    <!-- ── CONTENU GÉNÉRAL ── -->
+    <div class="illegal-sub-content active" id="illegal-sub-general">
+      <div class="intro-band">
+        <p>Le côté illégal est au cœur de l'expérience Power. Ces règles garantissent un équilibre entre la liberté criminelle et la qualité du RP. <strong>Toute activité illégale doit être jouée avec sérieux et cohérence narrative.</strong> Le "kill on sight" sans contexte RP n'a pas sa place ici.</p>
       </div>
+      <div class="rules-grid">
+        <div class="rule-chapter">
+          <div class="chapter-title">§ I1 — Gangs & organisations</div>
+          <div class="rule-card">
+            <div class="rule-header">
+              <div class="rule-num">I01</div>
+              <div class="rule-content">
+                <div class="rule-title">Création d'une organisation</div>
+                <div class="rule-desc">Toute organisation criminelle doit être validée par le staff via un dossier soumis sur Discord (nom, background, hiérarchie, territoire, code de conduite). Un gang non validé ne peut revendiquer de territoire.</div>
+              </div>
+              <span class="rule-badge badge-warn">Validation</span>
+            </div>
+          </div>
+          <div class="rule-card">
+            <div class="rule-header">
+              <div class="rule-num">I02</div>
+              <div class="rule-content">
+                <div class="rule-title">Guerres de gangs & conflits</div>
+                <div class="rule-desc">Un conflit entre organisations doit avoir une cause RP justifiée et escaladée progressivement. Aucun KOS (Kill on Sight) général n'est autorisé sans déclaration de guerre RP officielle validée par le staff.</div>
+              </div>
+              <span class="rule-badge badge-crit">Encadré</span>
+            </div>
+          </div>
+          <div class="rule-card">
+            <div class="rule-header">
+              <div class="rule-num">I03</div>
+              <div class="rule-content">
+                <div class="rule-title">Limites des membres actifs</div>
+                <div class="rule-desc">Lors d'une opération criminelle organisée (braquage, guerre, embuscade), le nombre de participants est limité selon le type d'action. Ces limites sont définies dans les règles spécifiques aux événements.</div>
+              </div>
+              <span class="rule-badge badge-info">Limite</span>
+            </div>
+          </div>
+          <div class="rule-card">
+            <div class="rule-header">
+              <div class="rule-num">I04</div>
+              <div class="rule-content">
+                <div class="rule-title">Territoires & trafics</div>
+                <div class="rule-desc">Chaque organisation validée peut contrôler un territoire défini. L'empiètement sur un territoire adverse doit s'accompagner d'un RP de confrontation, pas d'une simple présence passive pour farm.</div>
+              </div>
+              <span class="rule-badge badge-warn">Territoire</span>
+            </div>
+          </div>
+        </div>
 
-      <div class="rule-chapter">
-        <div class="chapter-title">§ I2 — Braquages & opérations</div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">I05</div>
-            <div class="rule-content">
-              <div class="rule-title">Règles de braquage</div>
-              <div class="rule-desc">Un braquage doit comporter une phase de préparation RP, une justification narrative et un nombre de participants défini. Braquer un joueur sans aucun RP préalable (juste pour le contenu) est interdit.</div>
+        <div class="rule-chapter">
+          <div class="chapter-title">§ I2 — Braquages & opérations</div>
+          <div class="rule-card">
+            <div class="rule-header">
+              <div class="rule-num">I05</div>
+              <div class="rule-content">
+                <div class="rule-title">Règles de braquage</div>
+                <div class="rule-desc">Un braquage doit comporter une phase de préparation RP, une justification narrative et un nombre de participants défini. Braquer un joueur sans aucun RP préalable (juste pour le contenu) est interdit.</div>
+              </div>
+              <span class="rule-badge badge-warn">Protocole</span>
             </div>
-            <span class="rule-badge badge-warn">Protocole</span>
+          </div>
+          <div class="rule-card">
+            <div class="rule-header">
+              <div class="rule-num">I06</div>
+              <div class="rule-content">
+                <div class="rule-title">Prises d'otages</div>
+                <div class="rule-desc">Toute prise d'otage doit être jouée sérieusement. L'otage doit être un joueur réel (pas un PNJ), la demande doit être cohérente et le RP doit se tenir jusqu'à résolution. Les fausses prises d'otages répétitives sont sanctionnées.</div>
+              </div>
+              <span class="rule-badge badge-crit">RP obligatoire</span>
+            </div>
+          </div>
+          <div class="rule-card">
+            <div class="rule-header">
+              <div class="rule-num">I07</div>
+              <div class="rule-content">
+                <div class="rule-title">Règles d'engagement</div>
+                <div class="rule-desc">Avant d'ouvrir le feu, un avertissement verbal clair doit être donné sauf situation d'urgence absolue (échange de tirs déjà en cours). Les executions de personnages désarmés et sans défense nécessitent un RP solide.</div>
+              </div>
+              <span class="rule-badge badge-warn">Important</span>
+            </div>
           </div>
         </div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">I06</div>
-            <div class="rule-content">
-              <div class="rule-title">Prises d'otages</div>
-              <div class="rule-desc">Toute prise d'otage doit être jouée sérieusement. L'otage doit être un joueur réel (pas un PNJ), la demande doit être cohérente et le RP doit se tenir jusqu'à résolution. Les fausses prises d'otages répétitives sont sanctionnées.</div>
-            </div>
-            <span class="rule-badge badge-crit">RP obligatoire</span>
-          </div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">I07</div>
-            <div class="rule-content">
-              <div class="rule-title">Règles d'engagement</div>
-              <div class="rule-desc">Avant d'ouvrir le feu, un avertissement verbal clair doit être donné sauf situation d'urgence absolue (échange de tirs déjà en cours). Les executions de personnages désarmés et sans défense nécessitent un RP solide.</div>
-            </div>
-            <span class="rule-badge badge-warn">Important</span>
-          </div>
-        </div>
-      </div>
 
-      <div class="rule-chapter">
-        <div class="chapter-title">§ I3 — Trafics & économie noire</div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">I08</div>
-            <div class="rule-content">
-              <div class="rule-title">Trafic de drogues</div>
-              <div class="rule-desc">La production et vente de stupéfiants est permise dans les zones désignées. Elle doit s'accompagner d'un RP de dealer/client cohérent. Le simple farm sans interaction RP n'est pas toléré.</div>
+        <div class="rule-chapter">
+          <div class="chapter-title">§ I3 — Trafics & économie noire</div>
+          <div class="rule-card">
+            <div class="rule-header">
+              <div class="rule-num">I08</div>
+              <div class="rule-content">
+                <div class="rule-title">Trafic de drogues</div>
+                <div class="rule-desc">La production et vente de stupéfiants est permise dans les zones désignées. Elle doit s'accompagner d'un RP de dealer/client cohérent. Le simple farm sans interaction RP n'est pas toléré.</div>
+              </div>
+              <span class="rule-badge badge-ok">Autorisé</span>
             </div>
-            <span class="rule-badge badge-ok">Autorisé</span>
           </div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">I09</div>
-            <div class="rule-content">
-              <div class="rule-title">Trafic d'armes</div>
-              <div class="rule-desc">Le commerce d'armes entre joueurs est soumis à un système de licences noires et doit se faire via des réseaux validés. Vendre des armes à des inconnus sans RP de connexion préalable expose à des sanctions.</div>
+          <div class="rule-card">
+            <div class="rule-header">
+              <div class="rule-num">I09</div>
+              <div class="rule-content">
+                <div class="rule-title">Trafic d'armes</div>
+                <div class="rule-desc">Le commerce d'armes entre joueurs est soumis à un système de licences noires et doit se faire via des réseaux validés. Vendre des armes à des inconnus sans RP de connexion préalable expose à des sanctions.</div>
+              </div>
+              <span class="rule-badge badge-warn">Encadré</span>
             </div>
-            <span class="rule-badge badge-warn">Encadré</span>
           </div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">I10</div>
-            <div class="rule-content">
-              <div class="rule-title">Blanchiment d'argent</div>
-              <div class="rule-desc">Le blanchiment via des entreprises couvertes est autorisé et encouragé dans le cadre narratif. Cependant, les montants doivent rester réalistes par rapport à l'activité de couverture choisie.</div>
+          <div class="rule-card">
+            <div class="rule-header">
+              <div class="rule-num">I10</div>
+              <div class="rule-content">
+                <div class="rule-title">Blanchiment d'argent</div>
+                <div class="rule-desc">Le blanchiment via des entreprises couvertes est autorisé et encouragé dans le cadre narratif. Cependant, les montants doivent rester réalistes par rapport à l'activité de couverture choisie.</div>
+              </div>
+              <span class="rule-badge badge-ok">Autorisé</span>
             </div>
-            <span class="rule-badge badge-ok">Autorisé</span>
           </div>
-        </div>
-        <div class="rule-card">
-          <div class="rule-header">
-            <div class="rule-num">I11</div>
-            <div class="rule-content">
-              <div class="rule-title">CK — Character Kill</div>
-              <div class="rule-desc">La mort définitive d'un personnage (CK) ne peut être imposée qu'avec le consentement du joueur concerné OU dans le cadre d'un RP de trahison grave validé par le staff. Un CK forcé non autorisé est une faute grave.</div>
+          <div class="rule-card">
+            <div class="rule-header">
+              <div class="rule-num">I11</div>
+              <div class="rule-content">
+                <div class="rule-title">CK — Character Kill</div>
+                <div class="rule-desc">La mort définitive d'un personnage (CK) ne peut être imposée qu'avec le consentement du joueur concerné OU dans le cadre d'un RP de trahison grave validé par le staff. Un CK forcé non autorisé est une faute grave.</div>
+              </div>
+              <span class="rule-badge badge-crit">Staff requis</span>
             </div>
-            <span class="rule-badge badge-crit">Staff requis</span>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- ── CONTENU MOB ── -->
+    <div class="illegal-sub-content" id="illegal-sub-mob">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:300px;gap:16px;opacity:0.35;">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#cc88ff" stroke-width="1.5"><path d="M3 12h10M13 8h5l2 4-2 4h-5"/><path d="M3 8h3v8H3z"/><line x1="6" y1="10" x2="6" y2="14"/><circle cx="17" cy="16" r="1.5"/></svg>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:6px;color:#cc88ff;">RÈGLEMENT MOB</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#555;">Contenu à venir</div>
+      </div>
+    </div>
+
+    <!-- ── CONTENU MC ── -->
+    <div class="illegal-sub-content" id="illegal-sub-mc">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:300px;gap:16px;opacity:0.35;">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#ff8800" stroke-width="1.5"><path d="M12 3C7 3 3 7.5 3 12v2h1l1 2h12l1-2h1v-2c0-4.5-4-9-7-9z"/><path d="M3 14c0 1 .5 2 1.5 2.5"/><path d="M21 14c0 1-.5 2-1.5 2.5"/><line x1="8" y1="19" x2="16" y2="19"/></svg>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:6px;color:#ff8800;">RÈGLEMENT MC</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#555;">Contenu à venir</div>
+      </div>
+    </div>
+
+    <!-- ── CONTENU SET ── -->
+    <div class="illegal-sub-content" id="illegal-sub-set">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:300px;gap:16px;opacity:0.35;">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#ff4d4d" stroke-width="1.5"><path d="M3 8c0 0 4-4 9-4s9 4 9 4"/><path d="M3 8c2 5 5 8 9 8s7-3 9-8"/><path d="M7 14c1 2 2.5 3 5 3s4-1 5-3"/><line x1="3" y1="8" x2="2" y2="13"/><line x1="21" y1="8" x2="22" y2="13"/></svg>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:6px;color:#ff4d4d;">RÈGLEMENT SET</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#555;">Contenu à venir</div>
+      </div>
+    </div>
+
   </div>
 
   <div class="color-divider"></div>
@@ -1115,11 +1655,33 @@
     illegal: { body: 'theme-illegal', navActive: 'active-illegal' }
   };
 
+  function switchShopCat(target) {
+    document.querySelectorAll('.shop-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.shop-cat-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('shop-section-' + target).classList.add('active');
+    document.getElementById('shop-tab-' + target).classList.add('active');
+  }
+
+  function filterVehicles(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.vehicle-card').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.class === cat) ? '' : 'none';
+    });
+  }
+
+  function switchIllegalSub(target) {
+    document.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.sub-' + target).classList.add('active');
+    document.querySelectorAll('.illegal-sub-content').forEach(c => c.classList.remove('active'));
+    document.getElementById('illegal-sub-' + target).classList.add('active');
+  }
+
   function switchSection(target) {
     const body = document.body;
 
     body.classList.remove('theme-main', 'theme-legal', 'theme-illegal');
-    if (target === 'garde') body.classList.add('theme-main');
+    if (target === 'garde' || target === 'boutique' || target === 'lore' || target === 'gangmap') body.classList.add('theme-main');
     else body.classList.add('theme-' + target);
 
     document.querySelectorAll('.rule-section').forEach(s => s.classList.remove('active'));
@@ -1129,15 +1691,24 @@
     document.querySelector('.tab-' + target).classList.add('active');
 
     const navGarde = document.getElementById('navGarde');
+    const navBoutique = document.getElementById('navBoutique');
+    const navLore = document.getElementById('navLore');
+    const navGangmap = document.getElementById('navGangmap');
     const navMain = document.getElementById('navMain');
     const navLegal = document.getElementById('navLegal');
     const navIllegal = document.getElementById('navIllegal');
     navGarde.className = '';
+    navBoutique.className = '';
+    navLore.className = '';
+    navGangmap.className = '';
     navMain.className = '';
     navLegal.className = '';
     navIllegal.className = '';
 
     if (target === 'garde') navGarde.className = 'active-garde';
+    if (target === 'boutique') navBoutique.className = 'active-boutique';
+    if (target === 'lore') navLore.className = 'active-lore';
+    if (target === 'gangmap') navGangmap.className = 'active-gangmap';
     if (target === 'main') navMain.className = 'active-main';
     if (target === 'legal') navLegal.className = 'active-legal';
     if (target === 'illegal') navIllegal.className = 'active-illegal';
