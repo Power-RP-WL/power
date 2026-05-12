@@ -1324,9 +1324,9 @@
           <div class="rule-num">03</div>
           <div class="rule-content">
             <div class="rule-title">Fear RP</div>
-            <div class="rule-desc">Il s'agit simplement du fait d'avoir peur en RP, non pas parce que vous, joueur, avez peur ou non, mais parce que votre personnage peut avoir à la ressentir lors de certaines situations. Le NoFear RP n'est pas toléré, vous ne pouvez pas rester de marbre quelle que soit la situation.</div>
+            <div class="rule-desc">Le Fear RP, c'est jouer la peur que votre personnage ressentirait naturellement face à une situation qui le dépasse — une arme braquée sur lui, un groupe hostile, une menace crédible. Personne ne vous oblige à le jouer. Mais si votre personnage reste de marbre là où n'importe qui aurait les jambes qui flanchent, attendez-vous à ce que la scène ait des conséquences. Ignorer le Fear RP de façon répétée ou flagrante peut mener à une mort RP — votre personnage prend des risques inconsidérés, il en assume le prix.</div>
           </div>
-          <span class="rule-badge badge-warn">Obligatoire</span>
+          <span class="rule-badge badge-info">Conseillé</span>
         </div>
       </div>
 
@@ -2357,8 +2357,9 @@ document.querySelectorAll('.lore-card').forEach(c => c.addEventListener('click',
 document.getElementById('loreBackdrop').addEventListener('click', function(e) { if (e.target === this) closeLoreModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLoreModal(); });
 </script>
-</body>
-</html>
+
+<script>
+  const themes = {
     main: { body: 'theme-main', navActive: 'active-main' },
     legal: { body: 'theme-legal', navActive: 'active-legal' },
     illegal: { body: 'theme-illegal', navActive: 'active-illegal' }
