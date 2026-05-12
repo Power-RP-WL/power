@@ -682,7 +682,38 @@
   .tab-btn.tab-boutique.active { color: #f0b429; }
   .tab-btn.tab-boutique.active::after { background: #f0b429; box-shadow: 0 0 12px rgba(240,180,41,0.5); }
 
-  /* ── SCROLL INDICATOR ── */
+  /* ── LORE CARDS ── */
+  .lore-card { transition: transform 0.3s ease; }
+  .lore-card:hover { z-index: 2; }
+  .lore-card-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(8,8,8,0.95) 0%,rgba(8,8,8,0.35) 50%,rgba(8,8,8,0.1) 100%); transition:opacity 0.4s ease; }
+  .lore-card:hover .lore-card-overlay { opacity:0.65; }
+  .lore-tag { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:9px; letter-spacing:3px; text-transform:uppercase; padding:2px 8px; border-radius:2px; margin-bottom:5px; display:inline-block; }
+  .lore-teaser { font-size:12px; color:var(--muted); line-height:1.4; font-weight:300; max-width:500px; opacity:0; transform:translateY(6px); transition:all 0.35s ease 0.05s; }
+  .lore-card:hover .lore-teaser { opacity:1; transform:translateY(0); }
+  .lore-cta { margin-top:8px; font-family:'Rajdhani',sans-serif; font-weight:700; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#a78bfa; display:flex; align-items:center; gap:8px; opacity:0; transform:translateY(6px); transition:all 0.35s ease 0.1s; }
+  .lore-cta::after { content:''; display:block; width:20px; height:1px; background:#a78bfa; transition:width 0.3s ease; }
+  .lore-card:hover .lore-cta::after { width:36px; }
+  .lore-card:hover .lore-cta { opacity:1; transform:translateY(0); }
+
+  /* ── LORE MODAL ── */
+  .lore-backdrop { position:fixed; inset:0; background:rgba(5,5,6,0.92); z-index:500; display:flex; align-items:center; justify-content:center; padding:24px; opacity:0; pointer-events:none; transition:opacity 0.3s ease; backdrop-filter:blur(8px); }
+  .lore-backdrop.open { opacity:1; pointer-events:all; }
+  .lore-modal { background:var(--bg2); border:1px solid var(--border); border-top:2px solid #a78bfa; max-width:740px; width:100%; max-height:85vh; overflow-y:auto; transform:translateY(24px); transition:transform 0.35s ease; scrollbar-width:thin; scrollbar-color:#a78bfa transparent; }
+  .lore-backdrop.open .lore-modal { transform:translateY(0); }
+  .lore-modal-header { padding:32px 36px 24px; border-bottom:1px solid var(--border); position:relative; }
+  .lore-modal-tag { font-family:'Rajdhani',sans-serif; font-weight:600; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+  .lore-modal-title { font-family:'Bebas Neue',sans-serif; font-size:48px; color:#fff; line-height:1; letter-spacing:2px; }
+  .lore-modal-close { position:absolute; top:28px; right:28px; background:none; border:1px solid var(--border); color:var(--muted); width:36px; height:36px; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center; transition:all 0.2s; }
+  .lore-modal-close:hover { border-color:#a78bfa; color:#fff; background:rgba(167,139,250,0.1); }
+  .lore-modal-body { padding:28px 36px 36px; }
+  .lore-modal-intro { font-size:15px; line-height:1.8; color:#aaa; margin-bottom:24px; padding-bottom:24px; border-bottom:1px solid var(--border); font-style:italic; font-weight:300; }
+  .lore-modal-section-title { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:rgba(167,139,250,0.7); margin-bottom:10px; margin-top:22px; }
+  .lore-modal-text { font-size:14px; line-height:1.8; color:var(--muted); font-weight:300; }
+  .lore-modal-highlight { margin:18px 0; padding:14px 18px; background:rgba(167,139,250,0.06); border-left:2px solid #a78bfa; font-size:13px; color:#888; line-height:1.7; font-style:italic; }
+  .lore-modal-pills { display:flex; flex-wrap:wrap; gap:6px; margin-top:20px; padding-top:20px; border-top:1px solid var(--border); }
+  .lore-modal-pill { font-family:'Rajdhani',sans-serif; font-weight:600; font-size:11px; letter-spacing:2px; text-transform:uppercase; padding:4px 12px; border:1px solid var(--border); color:var(--muted); background:rgba(255,255,255,0.02); border-radius:2px; }
+
+
   .scroll-bar {
     position: fixed;
     top: 70px; left: 0;
@@ -727,14 +758,11 @@
     <li><a href="#" id="navGarde" onclick="switchSection('garde');return false;">
       <span class="nav-dot dot-garde"></span> Accueil
     </a></li>
-    <li><a href="#" id="navBoutique" onclick="switchSection('boutique');return false;">
-      <span class="nav-dot dot-boutique"></span> Boutique
-    </a></li>
     <li><a href="#" id="navLore" onclick="switchSection('lore');return false;">
       <span class="nav-dot dot-lore"></span> Lore
     </a></li>
     <li><a href="#" id="navGangmap" onclick="switchSection('gangmap');return false;">
-      <span class="nav-dot dot-gangmap"></span> Gang Map
+      <span class="nav-dot dot-gangmap"></span> Map
     </a></li>
     <li><a href="#" class="active-main" id="navMain" onclick="switchSection('main');return false;">
       <span class="nav-dot dot-main"></span> Règlement principal
@@ -764,17 +792,13 @@
       <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       Accueil
     </button>
-    <button class="tab-btn tab-boutique" onclick="switchSection('boutique')">
-      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
-      Boutique
-    </button>
     <button class="tab-btn tab-lore" onclick="switchSection('lore')">
       <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
       Lore
     </button>
     <button class="tab-btn tab-gangmap" onclick="switchSection('gangmap')">
       <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
-      Gang Map
+      Map
     </button>
     <button class="tab-btn tab-main active" onclick="switchSection('main')">
       <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
@@ -785,7 +809,7 @@
       Règlement légal
     </button>
     <button class="tab-btn tab-illegal" onclick="switchSection('illegal')">
-      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h10M13 8h5l2 4-2 4h-5"/><path d="M3 8h3v8H3z"/><line x1="6" y1="10" x2="6" y2="14"/><circle cx="17" cy="16" r="1.5"/></svg>
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 9l9-6 9 6"/><path d="M6 12l-3 6h6l-3-6z"/><path d="M18 12l-3 6h6l-3-6z"/></svg>
       Règlement illégal
     </button>
   </div>
@@ -1023,11 +1047,158 @@
 
   <!-- ─── SECTION LORE ─── -->
   <div class="rule-section" id="section-lore">
-    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:400px;gap:20px;opacity:0.4;">
-      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:6px;color:#a78bfa;">LORE</div>
-      <div style="font-family:'Rajdhani',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#666;">Contenu à venir</div>
+    <div class="section-header">
+      <div class="section-eyebrow">Power — État souverain</div>
+      <div class="section-title" style="color:#a78bfa;text-shadow:0 0 40px rgba(167,139,250,0.3);">LORE</div>
+      <div class="section-sub">Explorez l'histoire et la géographie de New Bridge — cliquez sur un quartier pour lire son lore</div>
     </div>
+
+    <div class="intro-band" style="background:rgba(167,139,250,0.05);border-color:rgba(167,139,250,0.3);">
+      <p>New Bridge est un État souverain à l'intérieur des États-Unis, avec son propre gouvernement, son propre parlement et sa propre police d'État. Fondé en 1912 sur les berges de la Castle River, il s'est bâti sur le charbon, l'acier et la sueur d'immigrés venus de tout le continent. <strong>La désindustrialisation des années 60 a fracturé cet équilibre.</strong> Quand les aciéries ont fermé, d'autres structures ont pris le terrain que l'État avait abandonné. New Bridge aujourd'hui, c'est une façade qui brille — et quelque chose qui saigne discrètement depuis 50 ans.</p>
+    </div>
+
+    <!-- Stat bar -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);margin-bottom:40px;">
+      <div style="padding:20px;text-align:center;border-right:1px solid var(--border);">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#a78bfa;line-height:1;">1912</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px;">Fondé en</div>
+      </div>
+      <div style="padding:20px;text-align:center;border-right:1px solid var(--border);">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#a78bfa;line-height:1;">10</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px;">Quartiers</div>
+      </div>
+      <div style="padding:20px;text-align:center;border-right:1px solid var(--border);">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#a78bfa;line-height:1;">3</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px;">Pouvoirs actifs</div>
+      </div>
+      <div style="padding:20px;text-align:center;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#a78bfa;line-height:1;">État</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px;">Souverain USA</div>
+      </div>
+    </div>
+
+    <!-- Zone separator -->
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
+      <div style="font-family:'Rajdhani',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);white-space:nowrap;">Zone Nord</div>
+      <div style="flex:1;height:1px;background:var(--border);"></div>
+    </div>
+
+    <!-- Districts grid Nord -->
+    <div class="lore-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:3px;">
+
+      <div class="lore-card" data-lore="kingwood" style="position:relative;aspect-ratio:5/2;overflow:hidden;cursor:pointer;background:linear-gradient(145deg,#0a0c08 0%,#0e1209 50%,#080a06 100%);">
+        <div class="lore-card-overlay"></div>
+        <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
+          <div class="lore-tag" style="background:rgba(255,255,255,0.06);color:#9A9890;border:1px solid rgba(255,255,255,0.1);">Zone Fantôme — Côte Nord</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">Kingwood "Crackland"</div>
+          <div class="lore-teaser">Absente des cartes officielles depuis 2008. Un bourg rural que l'État a cessé de regarder.</div>
+          <div class="lore-cta">Lire le lore</div>
+        </div>
+      </div>
+
+      <div class="lore-card" data-lore="slagmore" style="position:relative;grid-column:span 2;aspect-ratio:16/5;overflow:hidden;cursor:pointer;background:linear-gradient(150deg,#100d0a 0%,#1a1410 50%,#120f0c 100%);">
+        <div class="lore-card-overlay"></div>
+        <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
+          <div class="lore-tag" style="background:rgba(155,29,29,0.2);color:#E57373;border:1px solid rgba(155,29,29,0.35);">Intérieur Nord — Ville industrielle</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">Slagmore</div>
+          <div class="lore-teaser">Une ancienne ville minière que personne n'a reconstruite. Le fentanyl a tout changé.</div>
+          <div class="lore-cta">Lire le lore</div>
+        </div>
+      </div>
+
+      <div class="lore-card" data-lore="sanpedro" style="position:relative;grid-column:span 3;aspect-ratio:21/4;overflow:hidden;cursor:pointer;background:linear-gradient(135deg,#0e1310 0%,#14201a 50%,#0c1510 100%);">
+        <div class="lore-card-overlay"></div>
+        <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
+          <div class="lore-tag" style="background:rgba(29,158,117,0.15);color:#5DCAA5;border:1px solid rgba(29,158,117,0.25);">Centre Nord — Contrôle Latino</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">San Pedro</div>
+          <div class="lore-teaser">Les docks du nord, les livraisons de la République Magma, une trêve fragile. C'est ici que tout entre dans l'État.</div>
+          <div class="lore-cta">Lire le lore</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Zone separator Sud -->
+    <div style="display:flex;align-items:center;gap:16px;margin:20px 0 16px;">
+      <div style="font-family:'Rajdhani',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);white-space:nowrap;">Zone Sud — Ville principale</div>
+      <div style="flex:1;height:1px;background:var(--border);"></div>
+    </div>
+
+    <!-- Districts grid Sud -->
+    <div class="lore-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:40px;">
+
+      <div class="lore-card" data-lore="financial" style="position:relative;grid-column:span 2;aspect-ratio:16/5;overflow:hidden;cursor:pointer;background:linear-gradient(135deg,#0d1520 0%,#152035 40%,#0a1525 70%,#1a2a40 100%);">
+        <div class="lore-card-overlay"></div>
+        <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
+          <div class="lore-tag" style="background:rgba(201,146,42,0.2);color:#E8B84B;border:1px solid rgba(201,146,42,0.3);">Wall Street Local</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">NewBridge Financial District</div>
+          <div class="lore-teaser">Tours de verre, banques privées, costumes impeccables — et le terrain de jeu de la mob depuis 70 ans.</div>
+          <div class="lore-cta">Lire le lore</div>
+        </div>
+      </div>
+
+      <div class="lore-card" data-lore="ashford" style="position:relative;aspect-ratio:5/2;overflow:hidden;cursor:pointer;background:linear-gradient(160deg,#151210 0%,#221a12 50%,#1a150e 100%);">
+        <div class="lore-card-overlay"></div>
+        <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
+          <div class="lore-tag" style="background:rgba(201,146,42,0.2);color:#E8B84B;border:1px solid rgba(201,146,42,0.3);">Quartier Riche</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">Ashford Heights</div>
+          <div class="lore-teaser">Villas, clubs privés, vues sur la Castle River. Propre en surface. Pourri en dessous.</div>
+          <div class="lore-cta">Lire le lore</div>
+        </div>
+      </div>
+
+      <div class="lore-card" data-lore="midtown" style="position:relative;aspect-ratio:5/2;overflow:hidden;cursor:pointer;background:linear-gradient(140deg,#130f18 0%,#1e1525 50%,#150f1a 100%);">
+        <div class="lore-card-overlay"></div>
+        <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
+          <div class="lore-tag" style="background:rgba(127,119,221,0.15);color:#AFA9EC;border:1px solid rgba(127,119,221,0.25);">Centre Mixte</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">Midtown</div>
+          <div class="lore-teaser">Le ventre de la ville. Bars, studios de musique, hôtels. Là où toutes les couches se croisent.</div>
+          <div class="lore-cta">Lire le lore</div>
+        </div>
+      </div>
+
+      <div class="lore-card" data-lore="amalfi" style="position:relative;aspect-ratio:5/2;overflow:hidden;cursor:pointer;background:linear-gradient(150deg,#141008 0%,#201808 50%,#181205 100%);">
+        <div class="lore-card-overlay"></div>
+        <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
+          <div class="lore-tag" style="background:rgba(201,146,42,0.12);color:#C9922A;border:1px solid rgba(201,146,42,0.2);">Communauté Italienne</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">Little Amalfi</div>
+          <div class="lore-teaser">Restaurants, familles italiennes, ruelles animées jusqu'au matin — et des connexions que personne n'affiche.</div>
+          <div class="lore-cta">Lire le lore</div>
+        </div>
+      </div>
+
+      <div class="lore-card" data-lore="brickcity" style="position:relative;aspect-ratio:5/2;overflow:hidden;cursor:pointer;background:linear-gradient(145deg,#150808 0%,#220f0f 50%,#180a0a 100%);">
+        <div class="lore-card-overlay"></div>
+        <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
+          <div class="lore-tag" style="background:rgba(155,29,29,0.2);color:#E57373;border:1px solid rgba(155,29,29,0.35);">Zone Chaude — Sud</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">Brickcity</div>
+          <div class="lore-teaser">Anciennement Queen-Brie Village. Construite par des immigrés de force. La cicatrice ouverte de New Bridge.</div>
+          <div class="lore-cta">Lire le lore</div>
+        </div>
+      </div>
+
+      <div class="lore-card" data-lore="portside" style="position:relative;aspect-ratio:5/2;overflow:hidden;cursor:pointer;background:linear-gradient(135deg,#0a0f15 0%,#0e1825 50%,#080d12 100%);">
+        <div class="lore-card-overlay"></div>
+        <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
+          <div class="lore-tag" style="background:rgba(56,138,221,0.15);color:#85B7EB;border:1px solid rgba(56,138,221,0.25);">Économie Souterraine</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">The Docks / Portside</div>
+          <div class="lore-teaser">Les entrepôts historiques de la mob. Là où tout transite. Et là où les MC ont aussi trouvé leur place.</div>
+          <div class="lore-cta">Lire le lore</div>
+        </div>
+      </div>
+
+      <div class="lore-card" data-lore="bridgecreek" style="position:relative;grid-column:span 3;aspect-ratio:21/4;overflow:hidden;cursor:pointer;background:linear-gradient(145deg,#080f18 0%,#0d1a2e 50%,#060c15 100%);">
+        <div class="lore-card-overlay"></div>
+        <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
+          <div class="lore-tag" style="background:rgba(56,138,221,0.15);color:#85B7EB;border:1px solid rgba(56,138,221,0.25);">Front de Mer — Côte Sud</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">Bridge Creek</div>
+          <div class="lore-teaser">La plage de New Bridge. Surfeurs, bars en bois, marina. Et derrière les façades, une discrétion qui arrange bien certaines personnes.</div>
+          <div class="lore-cta">Lire le lore</div>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
   <!-- ─── SECTION GANG MAP ─── -->
@@ -1462,15 +1633,15 @@
         Règlement général
       </button>
       <button class="sub-tab-btn sub-mob" onclick="switchIllegalSub('mob')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h10M13 8h5l2 4-2 4h-5"/><path d="M3 8h3v8H3z"/><line x1="6" y1="10" x2="6" y2="14"/><circle cx="17" cy="16" r="1.5"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><path d="M20 21a8 8 0 10-16 0"/><path d="M15 13l2 2 4-4"/></svg>
         Règlement MOB
       </button>
       <button class="sub-tab-btn sub-mc" onclick="switchIllegalSub('mc')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3C7 3 3 7.5 3 12v2h1l1 2h12l1-2h1v-2c0-4.5-4-9-7-9z"/><path d="M3 14c0 1 .5 2 1.5 2.5"/><path d="M21 14c0 1-.5 2-1.5 2.5"/><line x1="8" y1="19" x2="16" y2="19"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17H3v-4l2-5h9l2 4h3l2 2v3h-2"/><path d="M9 17h6"/></svg>
         Règlement MC
       </button>
       <button class="sub-tab-btn sub-set" onclick="switchIllegalSub('set')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8c0 0 4-4 9-4s9 4 9 4"/><path d="M3 8c2 5 5 8 9 8s7-3 9-8"/><path d="M7 14c1 2 2.5 3 5 3s4-1 5-3"/><line x1="3" y1="8" x2="2" y2="13"/><line x1="21" y1="8" x2="22" y2="13"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         Règlement SET
       </button>
     </div>
@@ -2031,8 +2202,163 @@
 
 <img src="POWER_2.png" alt="" class="corner-logo" aria-hidden="true">
 
+<!-- LORE MODAL -->
+<div class="lore-backdrop" id="loreBackdrop">
+  <div class="lore-modal" id="loreModal">
+    <div class="lore-modal-header">
+      <div class="lore-modal-tag" id="loreModalTag"></div>
+      <div class="lore-modal-title" id="loreModalTitle"></div>
+      <button class="lore-modal-close" onclick="closeLoreModal()">✕</button>
+    </div>
+    <div class="lore-modal-body" id="loreModalBody"></div>
+  </div>
+</div>
+
 <script>
-  const themes = {
+const loreData = {
+  financial: {
+    tag: "NewBridge Financial District — Wall Street local",
+    title: "NewBridge Financial District",
+    intro: "Six tours de verre, des dizaines de banques privées, un marché boursier régional. Le centre économique de l'État du New Bridge — et le quartier général de la mob depuis 70 ans.",
+    sections: [
+      { title: "Histoire", text: "Le Financial District est né dans les années 1940, porté par l'essor industriel de l'État. Les premiers immeubles de verre montèrent sur les berges de la Castle River. Le Castle Bridge original — le pont de pierre fondateur — enjambe la rivière en plein cœur du quartier. C'est autour de lui que tout s'est construit, et c'est autour de lui que tout tourne encore." },
+      { title: "La mob s'installe", text: "Dans les années 50, la mob — d'origine irlandaise et italienne, avec ses racines à Little Amalfi — commence à infiltrer les syndicats, les cabinets d'avocats, puis les banques. En 1951, la New Bridge Stock Exchange est fondée avec des capitaux partiellement issus des docks. Ce secret est le mieux gardé de l'État.", highlight: "La NBSX n'est pas une bourse comme les autres. Elle a été bâtie avec de l'argent qui venait des quais et des entrepôts. Plusieurs cabinets du quartier le savent. Ces dossiers ne quittent jamais les coffres." },
+      { title: "Aujourd'hui", text: "Les mobsters ne portent pas de chaînes ici. Ils portent des costumes. Blanchiment via des holdings et sociétés écrans, proxénétisme de luxe géré depuis des étages que personne ne surveille, ventes d'armes organisées à travers des intermédiaires fantômes. Le Financial District brille — et c'est exactement comme ça qu'ils veulent que ça reste." }
+    ],
+    pills: ["Mob implantée depuis 1950", "New Bridge Stock Exchange (NBSX)", "Blanchiment d'argent", "Sociétés écrans", "Proxénétisme de luxe", "Vente d'armes"]
+  },
+  ashford: {
+    tag: "Quartier Riche — Hauteurs de New Bridge",
+    title: "Ashford Heights",
+    intro: "Les hauteurs de New Bridge. Villas avec vue sur la Castle River, résidences sécurisées, clubs privés sur invitation. La bourgeoisie de l'État dort ici.",
+    sections: [
+      { title: "Le quartier des élites", text: "Ashford Heights a toujours été le quartier des bien installés. Des familles de l'État s'y sont enracinées dès les années 30, attirées par les hauteurs et la distance avec le reste de la ville. Avocats, banquiers, propriétaires fonciers. Quand le Financial District a prospéré, Ashford Heights en est devenu la vitrine résidentielle." },
+      { title: "Propre en surface", text: "Plusieurs résidents d'Ashford ont des comptes dans les mêmes banques que les mobsters du Financial District — pas par coïncidence. Des liens directs existent, soigneusement dissimulés derrière des fondations caritatives, des clubs de golf et des dîners privés. La police d'État ne s'attarde pas ici. Pas parce que c'est calme. Parce qu'on leur a expliqué que c'était calme.", highlight: "The Bridge Club, fondé en 1938, est le vrai centre de décision d'Ashford Heights. Membres sur invitation uniquement. C'est là que certaines décisions de l'État se prennent avant même d'arriver au parlement." }
+    ],
+    pills: ["Élites financières", "Liés à la mob", "The Bridge Club (privé)", "Police d'État complaisante"]
+  },
+  midtown: {
+    tag: "Centre Mixte — Industrie musicale",
+    title: "Midtown",
+    intro: "Le ventre de New Bridge. Restaurants, bars, studios d'enregistrement, hôtels de moyenne gamme. Là où toutes les couches se croisent — sans vraiment se mélanger.",
+    sections: [
+      { title: "Le carrefour de l'État", text: "Midtown n'appartient à personne et appartient à tout le monde. Les cols du Financial District y dînent en face de gars de Brickcity qui cherchent à se blanchir. Les fils d'Ashford Heights viennent le weekend. Les artistes de San Pedro viennent enregistrer. La ville entière y converge le soir — sans jamais vraiment se parler." },
+      { title: "L'industrie musicale", text: "Plusieurs labels sont installés à Midtown depuis les années 90. Issus des rues de Brickcity et du son Latino de San Pedro, ils ont été rachetés progressivement par des investisseurs liés à la mob. Aujourd'hui, ces labels sont parmi les principales structures de blanchiment de l'État.", highlight: "Un artiste de Brickcity signe dans un label à Midtown. Le label appartient à une holding du Financial District. La holding appartient à un mobster d'Ashford. L'argent fait trois tours et ressort propre." },
+      { title: "La nuit à Midtown", text: "La nuit, Midtown devient autre chose. Les bars restent ouverts jusqu'au matin. Les deals se font dans les parkings. Les tensions entre mondes différents dégénèrent parfois. La police d'État est visible — mais elle gère les apparences, pas les causes." }
+    ],
+    pills: ["Labels de musique (mob)", "Blanchiment d'argent", "Mixité sociale", "Nightlife active"]
+  },
+  amalfi: {
+    tag: "Communauté Italienne — Sud de New Bridge",
+    title: "Little Amalfi",
+    intro: "Little Amalfi ne dort jamais vraiment. Des familles italiennes installées depuis les années 50, des restaurants qui restent ouverts tard, des ruelles animées jusqu'au matin.",
+    sections: [
+      { title: "Les origines", text: "Les premières familles italiennes sont arrivées à New Bridge dans les années 50, attirées par les chantiers navals et les usines du sud de l'État. Elles se sont regroupées dans ce quartier du bas de la ville, entre les docks et le centre. En quelques décennies, Little Amalfi est devenu un quartier à part entière — épiceries, boulangeries, restaurants familiaux, et son église catholique dont la messe du dimanche réunit encore du monde." },
+      { title: "Un quartier animé", text: "Little Amalfi vit la nuit. Les terrasses restent ouvertes, les restaurants tournent jusqu'à deux ou trois heures du matin, les rues sont bruyantes même en hiver. C'est l'un des seuls endroits de New Bridge où les gens se saluent encore dans la rue, où les anciens jouent aux cartes devant les cafés.", highlight: "Little Amalfi borde The Docks. Ce n'est pas un hasard — plusieurs familles du quartier ont des liens avec Portside qui remontent aux syndicats des dockers des années 50, quand la mob irlando-italienne tenait les quais." },
+      { title: "Les connexions qui ne se disent pas", text: "Plusieurs mobsters du Financial District ont grandi ici. Certains y habitent encore. Little Amalfi n'est pas un quartier dangereux — mais c'est un quartier où les familles savent ce que certains font, et où personne ne pose de questions." }
+    ],
+    pills: ["Communauté italienne", "Animé la nuit", "Connexions mob historiques", "Quartier soudé", "Lien avec Portside"]
+  },
+  brickcity: {
+    tag: "Zone Chaude — Sud de New Bridge",
+    title: "Brickcity",
+    intro: "Anciennement Queen-Brie Village. Construite par des immigrés de force sous la colonisation du New Bridge. Aujourd'hui tenue par les sets. La cicatrice ouverte de l'État.",
+    sections: [
+      { title: "Les origines — Queen-Brie Village", text: "Brickcity ne s'est pas construite par choix. C'est l'État du New Bridge qui, en colonisant l'Île-Briven, a forcé les habitants à bâtir ce qui s'appelait alors Queen-Brie Village — une ville satellite au service des intérêts coloniaux. Des générations entières ont grandi ici sans droits réels, sans mobilité possible." },
+      { title: "La chute de l'État et la montée des sets", text: "Quand l'État du New Bridge a perdu la guerre civile au début des années 2000 face aux troupes de Castillo, Brickcity a basculé. Le gouverneur Regginton est parti en exil. Les structures de contrôle se sont effondrées. Dans le vide laissé, les sets ont pris le terrain. Rapidement. Définitivement.", highlight: "Depuis 2000, aucune unité de la police d'État n'entre seule dans Brickcity. Ils viennent en groupe, la nuit, pour des opérations ciblées. Et ils repartent avant l'aube." },
+      { title: "L'assassinat du Sergent Kane", text: "En 2005, le Sergent Kane — figure de la police d'État, visage de la lutte anti-sets — est retrouvé abattu de plusieurs balles dans les rues de Brickcity. Sa fille de 6 ans est assassinée à ses côtés. La 'Loi Kane' est promulguée. Elle n'a jamais vraiment été appliquée. Brickcity a continué." },
+      { title: "Aujourd'hui", text: "Brickcity est divisée en blocs. Chaque bloc a son propre set, ses propres règles. La coexistence est précaire, les accords tacites tiennent jusqu'à ce qu'ils ne tiennent plus. La mob ne touche pas à Brickcity directement — elle laisse les sets faire leur travail et récupère sa part en amont." }
+    ],
+    pills: ["Anciennement Queen-Brie Village", "Héritage colonial", "Sets par blocs", "Loi Kane (inappliquée)", "Zone de non-droit"]
+  },
+  portside: {
+    tag: "Économie Souterraine — The Docks",
+    title: "The Docks / Portside",
+    intro: "Les anciens entrepôts du port de New Bridge. Là où tout entre et tout sort. La mob y est implantée depuis les années 50. Et depuis quelques années, les MC y ont aussi trouvé leur place.",
+    sections: [
+      { title: "Les origines de la mob à Portside", text: "Les docks de New Bridge ont toujours été tenus par des structures organisées. Dans les années 40-50, la mob irlando-italienne — avec ses racines à Little Amalfi — a pris le contrôle des syndicats des dockers. Portside est le terrain historique de la mob, avant même qu'elle ne colonise le Financial District." },
+      { title: "Ce qu'il se passe ici", text: "Planques, réunions hors des bureaux du Financial District, points de livraison pour les marchandises venant de San Pedro. Des espaces que personne ne loue officiellement, que tout le monde utilise officieusement.", highlight: "Une règle non écrite tient à Portside depuis 30 ans : ce qui se passe dans les entrepôts ne sort pas des entrepôts. Les dockers qui travaillent encore ici ont appris à ne pas regarder dans les mauvaises directions." },
+      { title: "L'arrivée des MC", text: "Au tournant des années 2010, des clubs de moto ont commencé à s'implanter dans les entrepôts périphériques de Portside. La mob les a d'abord regardés avec méfiance — puis elle a compris leur utilité. Les MC contrôlent les routes longue distance que ni la mob ni les sets ne peuvent gérer aussi discrètement. Un accord tacite s'est formé." },
+      { title: "La connexion avec San Pedro", text: "Portside et San Pedro sont les deux faces d'une même opération. La drogue entre par San Pedro, transite par Portside, et repart vers Brickcity et le reste de l'État. La mob ne gère pas la rue — elle gère la logistique. C'est plus propre. Et c'est plus rentable." }
+    ],
+    pills: ["Mob historique", "Syndicats corrompus", "MC implantés depuis 2010", "Transit de marchandises", "Connexion San Pedro", "Connexion Little Amalfi"]
+  },
+  bridgecreek: {
+    tag: "Front de Mer — Côte Sud",
+    title: "Bridge Creek",
+    intro: "La façade maritime de New Bridge. Une marina, des bars sur pilotis, un front de mer que les touristes traversent sans vraiment s'arrêter. Bridge Creek a toujours été un endroit discret — et la discrétion, dans cet État, ça a une valeur.",
+    sections: [
+      { title: "Ce que Bridge Creek a été", text: "Dans les années 70 et 80, Bridge Creek était une station balnéaire modeste fréquentée par les familles de l'État. Des motels le long du front de mer, une criée, quelques restaurants de poisson. Honnête et vivant." },
+      { title: "La géographie qui arrange tout le monde", text: "Bridge Creek est positionné en bout de côte, à l'écart des axes principaux. Les hangars à bateaux, la marina et les entrepôts de pêche sont peu surveillés. C'est cette géographie qui a attiré, progressivement, des intérêts qui n'ont rien à voir avec le tourisme.", highlight: "Plusieurs livraisons qui 'passent par San Pedro' en théorie font une escale à Bridge Creek avant de remonter vers l'intérieur. La discrétion de Bridge Creek, c'est son actif principal." },
+      { title: "Aujourd'hui", text: "Bridge Creek est toujours une plage. Les surfeurs sont là le matin, les terrasses se remplissent le soir. Mais une partie du front de mer appartient officieusement à des intérêts que personne ne cherche à documenter. Les habitants ont appris depuis longtemps à ne pas poser de questions sur ce qui arrive et repart la nuit depuis la marina." }
+    ],
+    pills: ["Front de mer", "Marina discrète", "Transit maritime", "Tourisme de surface", "Surveillance minimale"]
+  },
+  sanpedro: {
+    tag: "Centre Nord — Contrôle Latino",
+    title: "San Pedro",
+    intro: "San Pedro, c'est l'entrée de tout ce qui vient de la République Magma. Les docks du nord, les réseaux Latino, une trêve fragile imposée depuis 2013. C'est ici que tout entre dans l'État.",
+    sections: [
+      { title: "Les origines", text: "San Pedro a été construit en même temps que Brickcity, sous la même contrainte coloniale. Les habitants venus de l'Île-Briven y ont été installés, séparés des autres, dans ce coin longeant les docks du nord. Pendant des années, ils ont travaillé ces docks sans en posséder quoi que ce soit." },
+      { title: "La connexion avec la République Magma", text: "Quand Castillo a pris le contrôle de l'Île-Briven et fondé la République Magma, des liens se sont naturellement formés avec les communautés de San Pedro. Aujourd'hui, les livraisons venant de la République Magma entrent dans l'État par les docks de San Pedro. C'est la principale voie d'approvisionnement du nord.", highlight: "La police d'État sait que les livraisons passent par San Pedro. Mais couper ce flux menacerait aussi l'approvisionnement énergétique de New Bridge — qui dépend lui aussi de Castillo. Ce levier, Castillo l'a compris avant tout le monde." },
+      { title: "La guerre de 2013 et la trêve", text: "En 2013, une guerre des blocs éclate entre deux factions de Brickcity qui tentent de s'étendre sur San Pedro. Trois semaines de violence pure. C'est San Pedro lui-même qui impose la trêve — en échange d'une part du marché redistribuée. Depuis, un équilibre fragile tient." }
+    ],
+    pills: ["Connexion République Magma", "Docks du nord", "Trêve depuis 2013", "Sets Latino", "Voie d'entrée principale"]
+  },
+  kingwood: {
+    tag: "Zone Fantôme — Côte Nord",
+    title: "Kingwood",
+    intro: "En 1980, quelques familles plantèrent un panneau en bois : Kingwood. Ce panneau tient encore debout — à moitié effacé. Le reste a disparu depuis longtemps.",
+    sections: [
+      { title: "Ce que Kingwood était", text: "En 1980, des familles venues du Kentucky et de Virginie-Occidentale s'installèrent à la pointe nord de l'État, attirées par la promesse de terrains bon marché. Quelques maisons en bois, un dépanneur, une station-service rouillée, une église baptiste. Rien de grand. Mais honnête." },
+      { title: "L'arrivée des sets", text: "Fin des années 90, des sets de Brickcity fuient la pression de la Loi Kane et cherchent un terrain vierge. Kingwood est parfaite : reculée, côtière, sans présence policière permanente. Le dépanneur ferme. L'église ferme. Les familles quittent Kingwood une à une.", highlight: "Le panneau dit toujours Kingwood. Mais les communes voisines ont arrêté d'appeler ça comme ça depuis des années. Pour eux, c'est Crackland. Et ça s'est imprégné comme un tampon officiel." },
+      { title: "L'affaire Doris Wren", text: "En 2008, Doris Wren, 67 ans, ancienne institutrice et dernière résidente 'officielle' de Kingwood, est retrouvée morte dans sa cuisine. Cause du décès : indéterminée. Aucun agent ne s'est déplacé. Le dossier a été traité par téléphone. C'est le dernier acte officiel impliquant Kingwood dans les archives de l'État." },
+      { title: "Aujourd'hui", text: "Kingwood tourne. La drogue circule, les gens meurent et naissent sans que l'État le sache. Generator Row — la rue où les sets contrôlent les groupes électrogènes — est le vrai centre de pouvoir. Pour avoir de l'électricité, les derniers habitants paient en silence." }
+    ],
+    pills: ["Absent des cartes officielles", "Affaire Doris Wren (2008)", "Dossier froid", "Generator Row", "The Treeline"]
+  },
+  slagmore: {
+    tag: "Intérieur Nord — Ville industrielle",
+    title: "Slagmore",
+    intro: "Slagmore, c'est ce qu'il reste d'une ville minière quand les mines ferment et que personne ne revient. Des entrepôts vides, des rues qui sentent encore le charbon.",
+    sections: [
+      { title: "La ville qui s'est vidée", text: "Slagmore a été fondée dans les années 30 autour d'un gisement de charbon qui alimentait les aciéries du sud de l'État. Pendant 40 ans, la ville a tourné à plein régime. Quand la dernière mine a fermé en 1978, Slagmore n'a pas vraiment récupéré. Les familles qui pouvaient partir sont parties." },
+      { title: "L'arrivée du fentanyl", text: "Vers 2017, quelque chose a changé à Slagmore. Pas du crack, pas de la coke — du fentanyl. Des pilules pressées à l'imitation de médicaments légaux, distribuées d'abord aux anciens mineurs pour la douleur, puis à tout le monde. La ville, déjà fragilisée, n'a pas résisté.", highlight: "On ne sait pas exactement d'où vient le fentanyl qui circule à Slagmore. Les routes remontent vers San Pedro, puis vers la République Magma. Mais entre les deux, plusieurs mains changent — et personne n'a encore tiré le fil jusqu'au bout." },
+      { title: "Aujourd'hui", text: "Slagmore n'est pas une zone de guerre. C'est pire — c'est une ville qui s'effondre en silence. Les entrepôts vides sont devenus des planques. Les rues sont calmes parce que les gens ne sortent plus vraiment. La police d'État y passe de temps en temps, fait ses statistiques, et repart." }
+    ],
+    pills: ["Ancienne ville minière", "Crise du fentanyl depuis 2017", "Connexion San Pedro", "Effondrement silencieux", "Présence policière symbolique"]
+  }
+};
+
+function openLoreModal(id) {
+  const data = loreData[id];
+  if (!data) return;
+  document.getElementById('loreModalTag').textContent = data.tag;
+  document.getElementById('loreModalTitle').textContent = data.title;
+  let html = '<p class="lore-modal-intro">' + data.intro + '</p>';
+  data.sections.forEach(s => {
+    html += '<div class="lore-modal-section-title">' + s.title + '</div><p class="lore-modal-text">' + s.text + '</p>';
+    if (s.highlight) html += '<div class="lore-modal-highlight">' + s.highlight + '</div>';
+  });
+  if (data.pills && data.pills.length) {
+    html += '<div class="lore-modal-pills">' + data.pills.map(p => '<div class="lore-modal-pill">' + p + '</div>').join('') + '</div>';
+  }
+  document.getElementById('loreModalBody').innerHTML = html;
+  document.getElementById('loreBackdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLoreModal() {
+  document.getElementById('loreBackdrop').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.lore-card').forEach(c => c.addEventListener('click', () => openLoreModal(c.dataset.lore)));
+document.getElementById('loreBackdrop').addEventListener('click', function(e) { if (e.target === this) closeLoreModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLoreModal(); });
+</script>
+</body>
+</html>
     main: { body: 'theme-main', navActive: 'active-main' },
     legal: { body: 'theme-legal', navActive: 'active-legal' },
     illegal: { body: 'theme-illegal', navActive: 'active-illegal' }
@@ -2064,7 +2390,7 @@
     const body = document.body;
 
     body.classList.remove('theme-main', 'theme-legal', 'theme-illegal');
-    if (target === 'garde' || target === 'boutique' || target === 'lore' || target === 'gangmap') body.classList.add('theme-main');
+    if (target === 'garde' || target === 'lore' || target === 'gangmap') body.classList.add('theme-main');
     else body.classList.add('theme-' + target);
 
     document.querySelectorAll('.rule-section').forEach(s => s.classList.remove('active'));
@@ -2074,14 +2400,12 @@
     document.querySelector('.tab-' + target).classList.add('active');
 
     const navGarde = document.getElementById('navGarde');
-    const navBoutique = document.getElementById('navBoutique');
     const navLore = document.getElementById('navLore');
     const navGangmap = document.getElementById('navGangmap');
     const navMain = document.getElementById('navMain');
     const navLegal = document.getElementById('navLegal');
     const navIllegal = document.getElementById('navIllegal');
     navGarde.className = '';
-    navBoutique.className = '';
     navLore.className = '';
     navGangmap.className = '';
     navMain.className = '';
@@ -2089,7 +2413,6 @@
     navIllegal.className = '';
 
     if (target === 'garde') navGarde.className = 'active-garde';
-    if (target === 'boutique') navBoutique.className = 'active-boutique';
     if (target === 'lore') navLore.className = 'active-lore';
     if (target === 'gangmap') navGangmap.className = 'active-gangmap';
     if (target === 'main') navMain.className = 'active-main';
