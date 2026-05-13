@@ -1161,7 +1161,8 @@
         </div>
       </div>
 
-      <div class="lore-card" data-lore="amalfi" style="position:relative;aspect-ratio:5/2;overflow:hidden;cursor:pointer;background:linear-gradient(150deg,#141008 0%,#201808 50%,#181205 100%);">
+      <div class="lore-card" data-lore="amalfi" style="position:relative;aspect-ratio:5/2;overflow:hidden;cursor:pointer;background:#000;">
+        <img src="amalfi_bg.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;transition:opacity 0.4s ease;" class="lore-bg-img">
         <div class="lore-card-overlay"></div>
         <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
           <div class="lore-tag" style="background:rgba(201,146,42,0.12);color:#C9922A;border:1px solid rgba(201,146,42,0.2);">Communauté Italienne</div>
@@ -1192,11 +1193,12 @@
         </div>
       </div>
 
-      <div class="lore-card" data-lore="bridgecreek" style="position:relative;grid-column:span 3;aspect-ratio:21/4;overflow:hidden;cursor:pointer;background:linear-gradient(145deg,#080f18 0%,#0d1a2e 50%,#060c15 100%);">
+      <div class="lore-card" data-lore="bridgecreek" style="position:relative;grid-column:span 3;aspect-ratio:21/4;overflow:hidden;cursor:pointer;background:#000;">
+        <img src="milliebeach_bg.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;transition:opacity 0.4s ease;" class="lore-bg-img">
         <div class="lore-card-overlay"></div>
         <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
           <div class="lore-tag" style="background:rgba(56,138,221,0.15);color:#85B7EB;border:1px solid rgba(56,138,221,0.25);">Front de Mer — Côte Sud</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">Bridge Creek</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">Millie Beach</div>
           <div class="lore-teaser">La plage de New Bridge. Surfeurs, bars en bois, marina. Et derrière les façades, une discrétion qui arrange bien certaines personnes.</div>
           <div class="lore-cta">Lire le lore</div>
         </div>
@@ -2289,12 +2291,12 @@ const loreData = {
   },
   bridgecreek: {
     tag: "Front de Mer — Côte Sud",
-    title: "Bridge Creek",
-    intro: "La façade maritime de New Bridge. Une marina, des bars sur pilotis, un front de mer que les touristes traversent sans vraiment s'arrêter. Bridge Creek a toujours été un endroit discret — et la discrétion, dans cet État, ça a une valeur.",
+    title: "Millie Beach",
+    intro: "La façade maritime de New Bridge. Une marina, des bars sur pilotis, un front de mer que les touristes traversent sans vraiment s'arrêter. Millie Beach a toujours été un endroit discret — et la discrétion, dans cet État, ça a une valeur.",
     sections: [
-      { title: "Ce que Bridge Creek a été", text: "Dans les années 70 et 80, Bridge Creek était une station balnéaire modeste fréquentée par les familles de l'État. Des motels le long du front de mer, une criée, quelques restaurants de poisson. Honnête et vivant." },
-      { title: "La géographie qui arrange tout le monde", text: "Bridge Creek est positionné en bout de côte, à l'écart des axes principaux. Les hangars à bateaux, la marina et les entrepôts de pêche sont peu surveillés. C'est cette géographie qui a attiré, progressivement, des intérêts qui n'ont rien à voir avec le tourisme.", highlight: "Plusieurs livraisons qui 'passent par San Pedro' en théorie font une escale à Bridge Creek avant de remonter vers l'intérieur. La discrétion de Bridge Creek, c'est son actif principal." },
-      { title: "Aujourd'hui", text: "Bridge Creek est toujours une plage. Les surfeurs sont là le matin, les terrasses se remplissent le soir. Mais une partie du front de mer appartient officieusement à des intérêts que personne ne cherche à documenter. Les habitants ont appris depuis longtemps à ne pas poser de questions sur ce qui arrive et repart la nuit depuis la marina." }
+      { title: "Ce que Millie Beach a été", text: "Dans les années 70 et 80, Millie Beach était une station balnéaire modeste fréquentée par les familles de l'État. Des motels le long du front de mer, une criée, quelques restaurants de poisson. Honnête et vivant." },
+      { title: "La géographie qui arrange tout le monde", text: "Millie Beach est positionné en bout de côte, à l'écart des axes principaux. Les hangars à bateaux, la marina et les entrepôts de pêche sont peu surveillés. C'est cette géographie qui a attiré, progressivement, des intérêts qui n'ont rien à voir avec le tourisme.", highlight: "Plusieurs livraisons qui 'passent par San Pedro' en théorie font une escale à Millie Beach avant de remonter vers l'intérieur. La discrétion de Millie Beach, c'est son actif principal." },
+      { title: "Aujourd'hui", text: "Millie Beach est toujours une plage. Les surfeurs sont là le matin, les terrasses se remplissent le soir. Mais une partie du front de mer appartient officieusement à des intérêts que personne ne cherche à documenter. Les habitants ont appris depuis longtemps à ne pas poser de questions sur ce qui arrive et repart la nuit depuis la marina." }
     ],
     pills: ["Front de mer", "Marina discrète", "Transit maritime", "Tourisme de surface", "Surveillance minimale"]
   },
