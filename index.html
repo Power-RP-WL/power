@@ -688,6 +688,7 @@
   .lore-card:hover { z-index: 2; }
   .lore-card-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(8,8,8,0.95) 0%,rgba(8,8,8,0.35) 50%,rgba(8,8,8,0.1) 100%); transition:opacity 0.4s ease; }
   .lore-card:hover .lore-card-overlay { opacity:0.65; }
+  .lore-card:hover .lore-bg-img { opacity:0.75; }
   .lore-tag { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:9px; letter-spacing:3px; text-transform:uppercase; padding:2px 8px; border-radius:2px; margin-bottom:5px; display:inline-block; }
   .lore-teaser { font-size:12px; color:var(--muted); line-height:1.4; font-weight:300; max-width:500px; opacity:0; transform:translateY(6px); transition:all 0.35s ease 0.05s; }
   .lore-card:hover .lore-teaser { opacity:1; transform:translateY(0); }
@@ -779,7 +780,7 @@
 
 <!-- BANNER -->
 <div class="banner" style="margin-top:70px;">
-  <img src="front_street_2.png" alt="Power Banner" id="bannerImg" style="object-fit:contain;background:#000;">
+  <img src="banniere_power.png" alt="Power Banner" id="bannerImg" style="object-fit:contain;background:#000;">
   <div class="banner-overlay"></div>
   <div class="banner-vignette"></div>
 </div>
@@ -1087,7 +1088,8 @@
     <!-- Districts grid Nord -->
     <div class="lore-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:3px;">
 
-      <div class="lore-card" data-lore="kingwood" style="position:relative;aspect-ratio:5/2;overflow:hidden;cursor:pointer;background:linear-gradient(145deg,#0a0c08 0%,#0e1209 50%,#080a06 100%);">
+      <div class="lore-card" data-lore="kingwood" style="position:relative;aspect-ratio:5/2;overflow:hidden;cursor:pointer;background:#000;">
+        <img src="kingwood_bg.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;transition:opacity 0.4s ease;" class="lore-bg-img">
         <div class="lore-card-overlay"></div>
         <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
           <div class="lore-tag" style="background:rgba(255,255,255,0.06);color:#9A9890;border:1px solid rgba(255,255,255,0.1);">Zone Fantôme — Côte Nord</div>
@@ -1107,7 +1109,8 @@
         </div>
       </div>
 
-      <div class="lore-card" data-lore="sanpedro" style="position:relative;grid-column:span 3;aspect-ratio:21/4;overflow:hidden;cursor:pointer;background:linear-gradient(135deg,#0e1310 0%,#14201a 50%,#0c1510 100%);">
+      <div class="lore-card" data-lore="sanpedro" style="position:relative;grid-column:span 3;aspect-ratio:21/4;overflow:hidden;cursor:pointer;background:#000;">
+        <img src="sanpedro_bg.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;transition:opacity 0.4s ease;" class="lore-bg-img">
         <div class="lore-card-overlay"></div>
         <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
           <div class="lore-tag" style="background:rgba(29,158,117,0.15);color:#5DCAA5;border:1px solid rgba(29,158,117,0.25);">Centre Nord — Contrôle Latino</div>
@@ -1152,7 +1155,7 @@
         <div class="lore-card-overlay"></div>
         <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
           <div class="lore-tag" style="background:rgba(127,119,221,0.15);color:#AFA9EC;border:1px solid rgba(127,119,221,0.25);">Centre Mixte</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">Midtown</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">Centre Ville</div>
           <div class="lore-teaser">Le ventre de la ville. Bars, studios de musique, hôtels. Là où toutes les couches se croisent.</div>
           <div class="lore-cta">Lire le lore</div>
         </div>
@@ -1168,12 +1171,13 @@
         </div>
       </div>
 
-      <div class="lore-card" data-lore="brickcity" style="position:relative;aspect-ratio:5/2;overflow:hidden;cursor:pointer;background:linear-gradient(145deg,#150808 0%,#220f0f 50%,#180a0a 100%);">
+      <div class="lore-card" data-lore="brickcity" style="position:relative;aspect-ratio:5/2;overflow:hidden;cursor:pointer;background:#000;">
+        <img src="brickville_bg.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;transition:opacity 0.4s ease;" class="lore-bg-img">
         <div class="lore-card-overlay"></div>
         <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
           <div class="lore-tag" style="background:rgba(155,29,29,0.2);color:#E57373;border:1px solid rgba(155,29,29,0.35);">Zone Chaude — Sud</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">Brickcity</div>
-          <div class="lore-teaser">Anciennement Queen-Brie Village. Construite par des immigrés de force. La cicatrice ouverte de New Bridge.</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">Brickville</div>
+          <div class="lore-teaser">Anciennement Queen-Brie Village. Construite pour un empire, tombée aux mains des gangs. La pire ville du New Bridge.</div>
           <div class="lore-cta">Lire le lore</div>
         </div>
       </div>
@@ -1182,7 +1186,7 @@
         <div class="lore-card-overlay"></div>
         <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
           <div class="lore-tag" style="background:rgba(56,138,221,0.15);color:#85B7EB;border:1px solid rgba(56,138,221,0.25);">Économie Souterraine</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">The Docks / Portside</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">Doc Entrepot</div>
           <div class="lore-teaser">Les entrepôts historiques de la mob. Là où tout transite. Et là où les MC ont aussi trouvé leur place.</div>
           <div class="lore-cta">Lire le lore</div>
         </div>
@@ -2239,13 +2243,13 @@ const loreData = {
     pills: ["Élites financières", "Liés à la mob", "The Bridge Club (privé)", "Police d'État complaisante"]
   },
   midtown: {
-    tag: "Centre Mixte — Industrie musicale",
-    title: "Midtown",
+    tag: "Centre Mixte — Centre Ville",
+    title: "Centre Ville",
     intro: "Le ventre de New Bridge. Restaurants, bars, studios d'enregistrement, hôtels de moyenne gamme. Là où toutes les couches se croisent — sans vraiment se mélanger.",
     sections: [
-      { title: "Le carrefour de l'État", text: "Midtown n'appartient à personne et appartient à tout le monde. Les cols du Financial District y dînent en face de gars de Brickcity qui cherchent à se blanchir. Les fils d'Ashford Heights viennent le weekend. Les artistes de San Pedro viennent enregistrer. La ville entière y converge le soir — sans jamais vraiment se parler." },
-      { title: "L'industrie musicale", text: "Plusieurs labels sont installés à Midtown depuis les années 90. Issus des rues de Brickcity et du son Latino de San Pedro, ils ont été rachetés progressivement par des investisseurs liés à la mob. Aujourd'hui, ces labels sont parmi les principales structures de blanchiment de l'État.", highlight: "Un artiste de Brickcity signe dans un label à Midtown. Le label appartient à une holding du Financial District. La holding appartient à un mobster d'Ashford. L'argent fait trois tours et ressort propre." },
-      { title: "La nuit à Midtown", text: "La nuit, Midtown devient autre chose. Les bars restent ouverts jusqu'au matin. Les deals se font dans les parkings. Les tensions entre mondes différents dégénèrent parfois. La police d'État est visible — mais elle gère les apparences, pas les causes." }
+      { title: "Le carrefour de l'État", text: "Centre Ville n'appartient à personne et appartient à tout le monde. Les cols du Financial District y dînent en face de gars de Brickville qui cherchent à se blanchir. Les fils d'Ashford Heights viennent le weekend. Les artistes de San Pedro viennent enregistrer. La ville entière y converge le soir — sans jamais vraiment se parler." },
+      { title: "L'industrie musicale", text: "Plusieurs labels sont installés au Centre Ville depuis les années 90. Issus des rues de Brickville et du son Latino de San Pedro, ils ont été rachetés progressivement par des investisseurs liés à la mob. Aujourd'hui, ces labels sont parmi les principales structures de blanchiment de l'État.", highlight: "Un artiste de Brickville signe dans un label au Centre Ville. Le label appartient à une holding du Financial District. La holding appartient à un mobster d'Ashford. L'argent fait trois tours et ressort propre." },
+      { title: "La nuit au Centre Ville", text: "La nuit, le Centre Ville devient autre chose. Les bars restent ouverts jusqu'au matin. Les deals se font dans les parkings. Les tensions entre mondes différents dégénèrent parfois. La police d'État est visible — mais elle gère les apparences, pas les causes." }
     ],
     pills: ["Labels de musique (mob)", "Blanchiment d'argent", "Mixité sociale", "Nightlife active"]
   },
@@ -2255,32 +2259,31 @@ const loreData = {
     intro: "Little Amalfi ne dort jamais vraiment. Des familles italiennes installées depuis les années 50, des restaurants qui restent ouverts tard, des ruelles animées jusqu'au matin.",
     sections: [
       { title: "Les origines", text: "Les premières familles italiennes sont arrivées à New Bridge dans les années 50, attirées par les chantiers navals et les usines du sud de l'État. Elles se sont regroupées dans ce quartier du bas de la ville, entre les docks et le centre. En quelques décennies, Little Amalfi est devenu un quartier à part entière — épiceries, boulangeries, restaurants familiaux, et son église catholique dont la messe du dimanche réunit encore du monde." },
-      { title: "Un quartier animé", text: "Little Amalfi vit la nuit. Les terrasses restent ouvertes, les restaurants tournent jusqu'à deux ou trois heures du matin, les rues sont bruyantes même en hiver. C'est l'un des seuls endroits de New Bridge où les gens se saluent encore dans la rue, où les anciens jouent aux cartes devant les cafés.", highlight: "Little Amalfi borde The Docks. Ce n'est pas un hasard — plusieurs familles du quartier ont des liens avec Portside qui remontent aux syndicats des dockers des années 50, quand la mob irlando-italienne tenait les quais." },
+      { title: "Un quartier animé", text: "Little Amalfi vit la nuit. Les terrasses restent ouvertes, les restaurants tournent jusqu'à deux ou trois heures du matin, les rues sont bruyantes même en hiver. C'est l'un des seuls endroits de New Bridge où les gens se saluent encore dans la rue, où les anciens jouent aux cartes devant les cafés.", highlight: "Little Amalfi borde le Doc Entrepot. Ce n'est pas un hasard — plusieurs familles du quartier ont des liens avec le Doc Entrepot qui remontent aux syndicats des dockers des années 50, quand la mob irlando-italienne tenait les quais." },
       { title: "Les connexions qui ne se disent pas", text: "Plusieurs mobsters du Financial District ont grandi ici. Certains y habitent encore. Little Amalfi n'est pas un quartier dangereux — mais c'est un quartier où les familles savent ce que certains font, et où personne ne pose de questions." }
     ],
-    pills: ["Communauté italienne", "Animé la nuit", "Connexions mob historiques", "Quartier soudé", "Lien avec Portside"]
+    pills: ["Communauté italienne", "Animé la nuit", "Connexions mob historiques", "Quartier soudé", "Lien avec Doc Entrepot"]
   },
   brickcity: {
     tag: "Zone Chaude — Sud de New Bridge",
-    title: "Brickcity",
-    intro: "Anciennement Queen-Brie Village. Construite par des immigrés de force sous la colonisation du New Bridge. Aujourd'hui tenue par les sets. La cicatrice ouverte de l'État.",
+    title: "Brickville — La cité des briques",
+    intro: "Anciennement Queen-Brie Village. Créée en 1980 pour accueillir les travailleurs immigrés afro chargés de construire un empire pour la Reine Queen Brie. Aujourd'hui classée pire ville du New Bridge.",
     sections: [
-      { title: "Les origines — Queen-Brie Village", text: "Brickcity ne s'est pas construite par choix. C'est l'État du New Bridge qui, en colonisant l'Île-Briven, a forcé les habitants à bâtir ce qui s'appelait alors Queen-Brie Village — une ville satellite au service des intérêts coloniaux. Des générations entières ont grandi ici sans droits réels, sans mobilité possible." },
-      { title: "La chute de l'État et la montée des sets", text: "Quand l'État du New Bridge a perdu la guerre civile au début des années 2000 face aux troupes de Castillo, Brickcity a basculé. Le gouverneur Regginton est parti en exil. Les structures de contrôle se sont effondrées. Dans le vide laissé, les sets ont pris le terrain. Rapidement. Définitivement.", highlight: "Depuis 2000, aucune unité de la police d'État n'entre seule dans Brickcity. Ils viennent en groupe, la nuit, pour des opérations ciblées. Et ils repartent avant l'aube." },
-      { title: "L'assassinat du Sergent Kane", text: "En 2005, le Sergent Kane — figure de la police d'État, visage de la lutte anti-sets — est retrouvé abattu de plusieurs balles dans les rues de Brickcity. Sa fille de 6 ans est assassinée à ses côtés. La 'Loi Kane' est promulguée. Elle n'a jamais vraiment été appliquée. Brickcity a continué." },
-      { title: "Aujourd'hui", text: "Brickcity est divisée en blocs. Chaque bloc a son propre set, ses propres règles. La coexistence est précaire, les accords tacites tiennent jusqu'à ce qu'ils ne tiennent plus. La mob ne touche pas à Brickcity directement — elle laisse les sets faire leur travail et récupère sa part en amont." }
+      { title: "Les origines — Queen-Brie Village", text: "Cette zone était un ensemble de quartiers créés pour accueillir les travailleurs immigrés afro, chargés de construire un empire pour la Reine de l'époque, Queen Brie. Début des années 90, l'arrivée de l'héroïne et du crack connaît une forte croissance sur la partie du North Queen-Brie Village, entraînant une chute considérable des travailleurs afro. L'État du New Bridge voit son projet tomber à l'eau malgré la construction de bâtiments en brique." },
+      { title: "La naissance de Brickville et l'émergence des gangs", text: "L'État du New Bridge décide alors de renommer Queen-Brie Village en Brickville — la cité des briques. Ce sera le début de l'émergence des gangs. Plusieurs fils de travailleurs vont créer leurs mouvements : certains pour répandre la drogue dans la ville et s'enrichir sur le dos des anciens travailleurs devenus toxicomanes, d'autres souhaitant juste semer le chaos et contrôler la ville via la violence.", highlight: "Les gangs de Brickville se font la guerre pour le monopole du crack, de l'héroïne et de la coke. La hiérarchie est simple — Brickville est une ville dirigée par des familles et des gangs puissants et influents." },
+      { title: "L'expansion et la réputation", text: "Certains dealers vont s'installer sur Kingwood et créer le Crackland. D'autres vont s'attaquer aux gangsters de San Pedro par pure gourmandise. La ville de Brickville est classée comme la pire ville du New Bridge, avec un taux de criminalité parmi les plus élevés de l'État." }
     ],
-    pills: ["Anciennement Queen-Brie Village", "Héritage colonial", "Sets par blocs", "Loi Kane (inappliquée)", "Zone de non-droit"]
+    pills: ["Anciennement Queen-Brie Village", "Queen Brie", "Crack & héroïne depuis les 90s", "Gangs familiaux", "Pire ville du New Bridge", "Connexion Kingwood"]
   },
   portside: {
-    tag: "Économie Souterraine — The Docks",
-    title: "The Docks / Portside",
+    tag: "Économie Souterraine — Doc Entrepot",
+    title: "Doc Entrepot",
     intro: "Les anciens entrepôts du port de New Bridge. Là où tout entre et tout sort. La mob y est implantée depuis les années 50. Et depuis quelques années, les MC y ont aussi trouvé leur place.",
     sections: [
-      { title: "Les origines de la mob à Portside", text: "Les docks de New Bridge ont toujours été tenus par des structures organisées. Dans les années 40-50, la mob irlando-italienne — avec ses racines à Little Amalfi — a pris le contrôle des syndicats des dockers. Portside est le terrain historique de la mob, avant même qu'elle ne colonise le Financial District." },
-      { title: "Ce qu'il se passe ici", text: "Planques, réunions hors des bureaux du Financial District, points de livraison pour les marchandises venant de San Pedro. Des espaces que personne ne loue officiellement, que tout le monde utilise officieusement.", highlight: "Une règle non écrite tient à Portside depuis 30 ans : ce qui se passe dans les entrepôts ne sort pas des entrepôts. Les dockers qui travaillent encore ici ont appris à ne pas regarder dans les mauvaises directions." },
-      { title: "L'arrivée des MC", text: "Au tournant des années 2010, des clubs de moto ont commencé à s'implanter dans les entrepôts périphériques de Portside. La mob les a d'abord regardés avec méfiance — puis elle a compris leur utilité. Les MC contrôlent les routes longue distance que ni la mob ni les sets ne peuvent gérer aussi discrètement. Un accord tacite s'est formé." },
-      { title: "La connexion avec San Pedro", text: "Portside et San Pedro sont les deux faces d'une même opération. La drogue entre par San Pedro, transite par Portside, et repart vers Brickcity et le reste de l'État. La mob ne gère pas la rue — elle gère la logistique. C'est plus propre. Et c'est plus rentable." }
+      { title: "Les origines de la mob au Doc Entrepot", text: "Les docks de New Bridge ont toujours été tenus par des structures organisées. Dans les années 40-50, la mob irlando-italienne — avec ses racines à Little Amalfi — a pris le contrôle des syndicats des dockers. Le Doc Entrepot est le terrain historique de la mob, avant même qu'elle ne colonise le Financial District." },
+      { title: "Ce qu'il se passe ici", text: "Planques, réunions hors des bureaux du Financial District, points de livraison pour les marchandises venant de San Pedro. Des espaces que personne ne loue officiellement, que tout le monde utilise officieusement.", highlight: "Une règle non écrite tient au Doc Entrepot depuis 30 ans : ce qui se passe dans les entrepôts ne sort pas des entrepôts. Les dockers qui travaillent encore ici ont appris à ne pas regarder dans les mauvaises directions." },
+      { title: "L'arrivée des MC", text: "Au tournant des années 2010, des clubs de moto ont commencé à s'implanter dans les entrepôts périphériques du Doc Entrepot. La mob les a d'abord regardés avec méfiance — puis elle a compris leur utilité. Les MC contrôlent les routes longue distance que ni la mob ni les sets ne peuvent gérer aussi discrètement. Un accord tacite s'est formé." },
+      { title: "La connexion avec San Pedro", text: "Le Doc Entrepot et San Pedro sont les deux faces d'une même opération. La drogue entre par San Pedro, transite par le Doc Entrepot, et repart vers Brickville et le reste de l'État. La mob ne gère pas la rue — elle gère la logistique. C'est plus propre. Et c'est plus rentable." }
     ],
     pills: ["Mob historique", "Syndicats corrompus", "MC implantés depuis 2010", "Transit de marchandises", "Connexion San Pedro", "Connexion Little Amalfi"]
   },
@@ -2296,38 +2299,37 @@ const loreData = {
     pills: ["Front de mer", "Marina discrète", "Transit maritime", "Tourisme de surface", "Surveillance minimale"]
   },
   sanpedro: {
-    tag: "Centre Nord — Contrôle Latino",
-    title: "San Pedro",
-    intro: "San Pedro, c'est l'entrée de tout ce qui vient de la République Magma. Les docks du nord, les réseaux Latino, une trêve fragile imposée depuis 2013. C'est ici que tout entre dans l'État.",
+    tag: "Centre Nord — Le Petit Mexique",
+    title: 'San Pedro — "Mexico City"',
+    intro: "San Pedro, c'est une ville construite par des mains mexicaines dans les années 80. Des avenues longues, des bâtiments bas, et des coins d'ombre où les gens savent qu'il ne faut pas traîner après vingt heures.",
     sections: [
-      { title: "Les origines", text: "San Pedro a été construit en même temps que Brickcity, sous la même contrainte coloniale. Les habitants venus de l'Île-Briven y ont été installés, séparés des autres, dans ce coin longeant les docks du nord. Pendant des années, ils ont travaillé ces docks sans en posséder quoi que ce soit." },
-      { title: "La connexion avec la République Magma", text: "Quand Castillo a pris le contrôle de l'Île-Briven et fondé la République Magma, des liens se sont naturellement formés avec les communautés de San Pedro. Aujourd'hui, les livraisons venant de la République Magma entrent dans l'État par les docks de San Pedro. C'est la principale voie d'approvisionnement du nord.", highlight: "La police d'État sait que les livraisons passent par San Pedro. Mais couper ce flux menacerait aussi l'approvisionnement énergétique de New Bridge — qui dépend lui aussi de Castillo. Ce levier, Castillo l'a compris avant tout le monde." },
-      { title: "La guerre de 2013 et la trêve", text: "En 2013, une guerre des blocs éclate entre deux factions de Brickcity qui tentent de s'étendre sur San Pedro. Trois semaines de violence pure. C'est San Pedro lui-même qui impose la trêve — en échange d'une part du marché redistribuée. Depuis, un équilibre fragile tient." }
+      { title: "Une ville construite par les immigrés", text: "Elles ont bâti les usines, posé les rails, rempli les abattoirs. Elles ont aussi rempli les blocs du côté nord de la ville, quartier par quartier, génération après génération. Avec très peu d'afro-américains — ce n'est pas un hasard, c'est une histoire de peuplement et de migration, de zones économiques qui ont séparé les communautés géographiquement depuis les années 70." },
+      { title: "Une ville entièrement latino", text: "La ville est entièrement latino. Les tensions n'y sont pas interraciales. Elles sont internes — entre clans, entre générations, entre ceux qui veulent sortir et ceux qui ne croient plus que c'est possible.", highlight: "San Pedro est la ville frontalière à Brickville. L'hostilité entre certains gangs des deux villes n'a pas d'origine précise. Elle a commencé par des disputes de frontière dans les années 80 — territoire de vente, zones de passage, affronts. Les détails ont changé. Le principe, non." },
+      { title: "L'histoire entre San Pedro et Brickville", text: "Aujourd'hui, un homme de San Pedro ne traverse pas Brickville seul la nuit. Et vice-versa. Ce n'est pas une règle écrite — c'est une réalité vécue, transmise de frère en frère, de bloc en bloc. Les morts des deux côtés ont rendu la chose personnelle." }
     ],
-    pills: ["Connexion République Magma", "Docks du nord", "Trêve depuis 2013", "Sets Latino", "Voie d'entrée principale"]
+    pills: ["Le Petit Mexique", "Mexico City", "100% Latino", "Tensions avec Brickville", "Frontalier Brickville", "Labos pharma"]
   },
   kingwood: {
     tag: "Zone Fantôme — Côte Nord",
-    title: "Kingwood",
-    intro: "En 1980, quelques familles plantèrent un panneau en bois : Kingwood. Ce panneau tient encore debout — à moitié effacé. Le reste a disparu depuis longtemps.",
+    title: 'Kingwood — "Crackland"',
+    intro: "En 1980, une poignée d'hommes plantèrent un panneau en bois au bord d'une route de terre battue. Il était écrit dessus, en lettres noires et maladroites : Kingwood. Personne ne sut vraiment qui avait choisi ce nom.",
     sections: [
-      { title: "Ce que Kingwood était", text: "En 1980, des familles venues du Kentucky et de Virginie-Occidentale s'installèrent à la pointe nord de l'État, attirées par la promesse de terrains bon marché. Quelques maisons en bois, un dépanneur, une station-service rouillée, une église baptiste. Rien de grand. Mais honnête." },
-      { title: "L'arrivée des sets", text: "Fin des années 90, des sets de Brickcity fuient la pression de la Loi Kane et cherchent un terrain vierge. Kingwood est parfaite : reculée, côtière, sans présence policière permanente. Le dépanneur ferme. L'église ferme. Les familles quittent Kingwood une à une.", highlight: "Le panneau dit toujours Kingwood. Mais les communes voisines ont arrêté d'appeler ça comme ça depuis des années. Pour eux, c'est Crackland. Et ça s'est imprégné comme un tampon officiel." },
-      { title: "L'affaire Doris Wren", text: "En 2008, Doris Wren, 67 ans, ancienne institutrice et dernière résidente 'officielle' de Kingwood, est retrouvée morte dans sa cuisine. Cause du décès : indéterminée. Aucun agent ne s'est déplacé. Le dossier a été traité par téléphone. C'est le dernier acte officiel impliquant Kingwood dans les archives de l'État." },
-      { title: "Aujourd'hui", text: "Kingwood tourne. La drogue circule, les gens meurent et naissent sans que l'État le sache. Generator Row — la rue où les sets contrôlent les groupes électrogènes — est le vrai centre de pouvoir. Pour avoir de l'électricité, les derniers habitants paient en silence." }
+      { title: "La naissance d'une ville fantôme", text: "Certains disaient que c'était un hommage à un propriétaire terrien local, un certain Roy King, disparu sans laisser de traces. D'autres préféraient croire que c'était le rêve d'un bourg royal, digne et prospère, dans ce coin oublié de l'Amérique profonde. À l'origine, Kingwood était censée être une ville ouvrière. Des familles venues du Kentucky et de Virginie-Occidentale vinrent s'y installer, attirées par la promesse de terrains bon marché et d'un avenir simple. On construisit quelques maisons en bois, un dépanneur, une station-service rouillée, et une petite église baptiste dont la cloche ne sonnait jamais très longtemps." },
+      { title: "Crackland — La naissance d'un surnom maudit", text: "Fin des années 90, des gangs de Brickville décident de s'expatrier à Kingwood pour y faire régner la loi. Les dealers s'installent confortablement et forcent les commerçants et l'église de Kingwood à fermer. Les habitants des communes voisines avaient cessé d'appeler la ville par son nom.", highlight: "Pour eux, c'était Crackland — la terre du crack. Ce surnom, murmuré d'abord, finit par s'imprimer dans les esprits avec la brutalité d'un tampon officiel." },
+      { title: "Un marché ouvert", text: "Kingwood était devenue un marché ouvert. Le crack, bien sûr, restait la drogue reine — mais les pilules détournées de leur usage médical avaient aussi trouvé leur place. La ville est maintenant une plaque tournante miniature, ignorée des autorités, invisible pour l'État, mais bien connue de tous ceux qui cherchaient quelque chose à fumer, à sniffer ou à injecter dans un coin reculé du comté de New Bridge." }
     ],
-    pills: ["Absent des cartes officielles", "Affaire Doris Wren (2008)", "Dossier froid", "Generator Row", "The Treeline"]
+    pills: ["Crackland", "Gangs de Brickville", "Marché ouvert", "Hors radar de l'État", "Dealers installés fin 90s"]
   },
   slagmore: {
-    tag: "Intérieur Nord — Ville industrielle",
+    tag: "Intérieur Nord — Terre agricole dévastée",
     title: "Slagmore",
-    intro: "Slagmore, c'est ce qu'il reste d'une ville minière quand les mines ferment et que personne ne revient. Des entrepôts vides, des rues qui sentent encore le charbon.",
+    intro: "Slague signifiait autrefois « châtiment » en allemand. Les anciens qui ont nommé cette terre ne savaient pas à quel point ils avaient raison. Slagmore est la ville abandonnée des zombies.",
     sections: [
-      { title: "La ville qui s'est vidée", text: "Slagmore a été fondée dans les années 30 autour d'un gisement de charbon qui alimentait les aciéries du sud de l'État. Pendant 40 ans, la ville a tourné à plein régime. Quand la dernière mine a fermé en 1978, Slagmore n'a pas vraiment récupéré. Les familles qui pouvaient partir sont parties." },
-      { title: "L'arrivée du fentanyl", text: "Vers 2017, quelque chose a changé à Slagmore. Pas du crack, pas de la coke — du fentanyl. Des pilules pressées à l'imitation de médicaments légaux, distribuées d'abord aux anciens mineurs pour la douleur, puis à tout le monde. La ville, déjà fragilisée, n'a pas résisté.", highlight: "On ne sait pas exactement d'où vient le fentanyl qui circule à Slagmore. Les routes remontent vers San Pedro, puis vers la République Magma. Mais entre les deux, plusieurs mains changent — et personne n'a encore tiré le fil jusqu'au bout." },
-      { title: "Aujourd'hui", text: "Slagmore n'est pas une zone de guerre. C'est pire — c'est une ville qui s'effondre en silence. Les entrepôts vides sont devenus des planques. Les rues sont calmes parce que les gens ne sortent plus vraiment. La police d'État y passe de temps en temps, fait ses statistiques, et repart." }
+      { title: "Les origines — La terre des familles", text: "Dans les années 1980, une vingtaine de familles y vivent. Elles cultivent du maïs, du soja, un peu d'orge. Certaines élèvent des porcs ou du bétail. Les noms de ces familles reviennent encore dans les archives locales : les Deetch, les McFerrin — des patronymes irlandais et allemands, arrivés deux à trois générations plus tôt." },
+      { title: "La crise agricole et l'exode", text: "Début des années 90, la crise agricole américaine frappe Slagmore de plein fouet. Les Deetch perdent leur fameuse et fructueuse ferme en 1986. Les Prichard partent l'année suivante. Les saisies bancaires se succèdent. Les familles qui peuvent se permettre de partir vont vers les villes voisines comme San Pedro ou Kingwood.", highlight: "Les entreprises pharmaceutiques et laboratoires tenus par certains gros bonnets de San Pedro vont s'installer massivement dans Slagmore. Les habitants sont dans l'obligation de se nourrir dans les villes voisines." },
+      { title: "D'une terre fertile à une usine à ciel ouvert", text: "Anciennement une terre fertile, Slagmore va devenir une usine à ciel ouvert. Les consommateurs qui se tournaient vers les aliments naturels des fermes vont maintenant se tourner vers les laboratoires et pharmacies indépendantes. Aucun gang installé, mais beaucoup de consommateurs en tout genre — avec un taux de pauvreté parmi les plus élevés de l'État. Slagmore est la ville que tout le monde a fui, et que la drogue a fini par remplir." }
     ],
-    pills: ["Ancienne ville minière", "Crise du fentanyl depuis 2017", "Connexion San Pedro", "Effondrement silencieux", "Présence policière symbolique"]
+    pills: ["Ancienne terre agricole", "Crise agricole années 90", "Labos pharma de San Pedro", "Aucun gang — que des consommateurs", "Taux de pauvreté extrême"]
   }
 };
 
@@ -2341,9 +2343,6 @@ function openLoreModal(id) {
     html += '<div class="lore-modal-section-title">' + s.title + '</div><p class="lore-modal-text">' + s.text + '</p>';
     if (s.highlight) html += '<div class="lore-modal-highlight">' + s.highlight + '</div>';
   });
-  if (data.pills && data.pills.length) {
-    html += '<div class="lore-modal-pills">' + data.pills.map(p => '<div class="lore-modal-pill">' + p + '</div>').join('') + '</div>';
-  }
   document.getElementById('loreModalBody').innerHTML = html;
   document.getElementById('loreBackdrop').classList.add('open');
   document.body.style.overflow = 'hidden';
