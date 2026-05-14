@@ -759,13 +759,13 @@
     <li><a href="#" id="navGarde" onclick="switchSection('garde');return false;">
       <span class="nav-dot dot-garde"></span> Accueil
     </a></li>
-    <li><a href="#" id="navLore" onclick="switchSection('lore');return false;">
+    <li><a href="#" class="active-lore" id="navLore" onclick="switchSection('lore');return false;">
       <span class="nav-dot dot-lore"></span> Lore
     </a></li>
     <li><a href="#" id="navGangmap" onclick="switchSection('gangmap');return false;">
       <span class="nav-dot dot-gangmap"></span> Map
     </a></li>
-    <li><a href="#" class="active-main" id="navMain" onclick="switchSection('main');return false;">
+    <li><a href="#" id="navMain" onclick="switchSection('main');return false;">
       <span class="nav-dot dot-main"></span> Règlement principal
     </a></li>
     <li><a href="#" id="navLegal" onclick="switchSection('legal');return false;">
@@ -801,7 +801,7 @@
       <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
       Map
     </button>
-    <button class="tab-btn tab-main active" onclick="switchSection('main')">
+    <button class="tab-btn tab-lore active" onclick="switchSection('lore')">
       <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
       Règlement principal
     </button>
@@ -1047,7 +1047,7 @@
   </div>
 
   <!-- ─── SECTION LORE ─── -->
-  <div class="rule-section" id="section-lore">
+  <div class="rule-section active" id="section-lore">
     <div class="section-header">
       <div class="section-eyebrow">Power — État souverain</div>
       <div class="section-title" style="color:#a78bfa;text-shadow:0 0 40px rgba(167,139,250,0.3);">LORE</div>
@@ -1094,7 +1094,8 @@
         </div>
       </div>
 
-      <div class="lore-card" data-lore="slagmore" style="position:relative;grid-column:span 2;aspect-ratio:16/5;overflow:hidden;cursor:pointer;background:linear-gradient(150deg,#100d0a 0%,#1a1410 50%,#120f0c 100%);">
+      <div class="lore-card" data-lore="slagmore" style="position:relative;grid-column:span 2;aspect-ratio:16/5;overflow:hidden;cursor:pointer;background:#000;">
+        <img src="slagmore_bg.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;transition:opacity 0.4s ease;" class="lore-bg-img">
         <div class="lore-card-overlay"></div>
         <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
           <div class="lore-tag" style="background:rgba(155,29,29,0.2);color:#E57373;border:1px solid rgba(155,29,29,0.35);">Intérieur Nord — Ville industrielle</div>
@@ -1303,7 +1304,7 @@
   </div>
 
   <!-- ─── SECTION PRINCIPALE ─── -->
-  <div class="rule-section active" id="section-main">
+  <div class="rule-section" id="section-main">
     <div class="section-header">
       <div class="section-eyebrow">Power — Serveur GTA V</div>
       <div class="section-title">RÈGLEMENT GLOBAL POWER</div>
