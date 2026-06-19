@@ -1110,9 +1110,9 @@
         <img src="sanpedro_bg.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;transition:opacity 0.4s ease;" class="lore-bg-img">
         <div class="lore-card-overlay"></div>
         <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
-          <div class="lore-tag" style="background:rgba(29,158,117,0.15);color:#5DCAA5;border:1px solid rgba(29,158,117,0.25);">Centre Nord — Contrôle Latino</div>
+          <div class="lore-tag" style="background:rgba(29,158,117,0.15);color:#5DCAA5;border:1px solid rgba(29,158,117,0.25);">La Ville du Diable</div>
           <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">San Pedro</div>
-          <div class="lore-teaser">Les docks du nord, les livraisons de la République Magma, une trêve fragile. C'est ici que tout entre dans l'État.</div>
+          <div class="lore-teaser">Ville du luxe et des faits divers les plus sombres. L'affaire ThaiGate n'a jamais été résolue.</div>
           <div class="lore-cta">Lire le lore</div>
         </div>
       </div>
@@ -2260,12 +2260,9 @@ const loreData = {
   ashford: {
     tag: "Quartier Riche — Hauteurs de New Bridge",
     title: "Ashford Heights",
-    intro: "Les hauteurs de New Bridge. Villas avec vue sur la Castle River, résidences sécurisées, clubs privés sur invitation. La bourgeoisie de l'État dort ici.",
-    sections: [
-      { title: "Le quartier des élites", text: "Ashford Heights a toujours été le quartier des bien installés. Des familles de l'État s'y sont enracinées dès les années 30, attirées par les hauteurs et la distance avec le reste de la ville. Avocats, banquiers, propriétaires fonciers. Quand le Financial District a prospéré, Ashford Heights en est devenu la vitrine résidentielle." },
-      { title: "Propre en surface", text: "Plusieurs résidents d'Ashford ont des comptes dans les mêmes banques que les mobsters du Financial District — pas par coïncidence. Des liens directs existent, soigneusement dissimulés derrière des fondations caritatives, des clubs de golf et des dîners privés. La police d'État ne s'attarde pas ici. Pas parce que c'est calme. Parce qu'on leur a expliqué que c'était calme.", highlight: "The Bridge Club, fondé en 1938, est le vrai centre de décision d'Ashford Heights. Membres sur invitation uniquement. C'est là que certaines décisions de l'État se prennent avant même d'arriver au parlement." }
-    ],
-    pills: ["Élites financières", "Liés à la mob", "The Bridge Club (privé)", "Police d'État complaisante"]
+    intro: "",
+    sections: [],
+    pills: []
   },
   midtown: {
     tag: "Centre Mixte — Centre Ville",
@@ -2315,24 +2312,20 @@ const loreData = {
   bridgecreek: {
     tag: "Front de Mer — Côte Sud",
     title: "Millie Beach",
-    intro: "La façade maritime de New Bridge. Une marina, des bars sur pilotis, un front de mer que les touristes traversent sans vraiment s'arrêter. Millie Beach a toujours été un endroit discret — et la discrétion, dans cet État, ça a une valeur.",
-    sections: [
-      { title: "Ce que Millie Beach a été", text: "Dans les années 70 et 80, Millie Beach était une station balnéaire modeste fréquentée par les familles de l'État. Des motels le long du front de mer, une criée, quelques restaurants de poisson. Honnête et vivant." },
-      { title: "La géographie qui arrange tout le monde", text: "Millie Beach est positionné en bout de côte, à l'écart des axes principaux. Les hangars à bateaux, la marina et les entrepôts de pêche sont peu surveillés. C'est cette géographie qui a attiré, progressivement, des intérêts qui n'ont rien à voir avec le tourisme.", highlight: "Plusieurs livraisons qui 'passent par San Pedro' en théorie font une escale à Millie Beach avant de remonter vers l'intérieur. La discrétion de Millie Beach, c'est son actif principal." },
-      { title: "Aujourd'hui", text: "Millie Beach est toujours une plage. Les surfeurs sont là le matin, les terrasses se remplissent le soir. Mais une partie du front de mer appartient officieusement à des intérêts que personne ne cherche à documenter. Les habitants ont appris depuis longtemps à ne pas poser de questions sur ce qui arrive et repart la nuit depuis la marina." }
-    ],
-    pills: ["Front de mer", "Marina discrète", "Transit maritime", "Tourisme de surface", "Surveillance minimale"]
+    intro: "",
+    sections: [],
+    pills: []
   },
   sanpedro: {
-    tag: "Centre Nord — Le Petit Mexique",
-    title: 'San Pedro — "Mexico City"',
-    intro: "San Pedro, c'est une ville construite par des mains mexicaines dans les années 80. Des avenues longues, des bâtiments bas, et des coins d'ombre où les gens savent qu'il ne faut pas traîner après vingt heures.",
+    tag: "La Ville du Diable",
+    title: "San Pedro",
+    intro: "Surnommée la ville du Diable, San Pedro est une ville qui a su se suffire à elle-même. Bâtie dans les années 90 pour attirer les riches investisseurs, ce sont les mafieux millionnaires, serial killers et anciens politiciens sortis de prison qui ont pris place.",
     sections: [
-      { title: "Une ville construite par les immigrés", text: "Elles ont bâti les usines, posé les rails, rempli les abattoirs. Elles ont aussi rempli les blocs du côté nord de la ville, quartier par quartier, génération après génération. Avec très peu d'afro-américains — ce n'est pas un hasard, c'est une histoire de peuplement et de migration, de zones économiques qui ont séparé les communautés géographiquement depuis les années 70." },
-      { title: "Une ville entièrement latino", text: "La ville est entièrement latino. Les tensions n'y sont pas interraciales. Elles sont internes — entre clans, entre générations, entre ceux qui veulent sortir et ceux qui ne croient plus que c'est possible.", highlight: "San Pedro est la ville frontalière à Brickville. L'hostilité entre certains gangs des deux villes n'a pas d'origine précise. Elle a commencé par des disputes de frontière dans les années 80 — territoire de vente, zones de passage, affronts. Les détails ont changé. Le principe, non." },
-      { title: "L'histoire entre San Pedro et Brickville", text: "Aujourd'hui, un homme de San Pedro ne traverse pas Brickville seul la nuit. Et vice-versa. Ce n'est pas une règle écrite — c'est une réalité vécue, transmise de frère en frère, de bloc en bloc. Les morts des deux côtés ont rendu la chose personnelle." }
+      { title: "Une ville de luxe et de faits divers", text: "San Pedro est la ville du luxe mais aussi des faits divers les plus horribles de l'État du New Bridge. L'affaire la plus marquante reste l'affaire ThaiGate — une Thaïlandaise de 18 ans retrouvée morte dans une chambre d'hôtel, la bouche ouverte et facturée, étouffée par une batte de baseball, de la cocaïne versée sur son ventre.", highlight: "Aucune enquête ne sera entamée. L'affaire ThaiGate n'a jamais été résolue jusqu'à présent. C'est la nature même de San Pedro : les crimes les plus graves y disparaissent dans le silence." },
+      { title: "Une montée en puissance économique", text: "Économiquement, San Pedro a connu une montée en puissance avec de nombreuses arrivées — habitants de Paxton en quête d'une vie meilleure, patrons d'entreprises et commerçants. La ville attire autant qu'elle fait fuir." },
+      { title: "Un lieu de rêve à double tranchant", text: "Malgré le manque de justice et le contrôle massif des organisations criminelles en tout genre, San Pedro est devenu le lieu de rêve de l'État. Mais c'est un rêve à double tranchant : soit tu vis cette vie, soit tu vas la subir." }
     ],
-    pills: ["Le Petit Mexique", "Mexico City", "100% Latino", "Tensions avec Brickville", "Frontalier Brickville", "Labos pharma"]
+    pills: ["Ville du Diable", "Affaire ThaiGate", "Mafieux & ex-politiciens", "Luxe et criminalité", "Aucune justice"]
   },
   kingwood: {
     tag: "Communauté Soudée — Nord de New Bridge",
