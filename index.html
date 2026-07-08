@@ -1206,6 +1206,17 @@
         </div>
       </div>
 
+      <div class="lore-card" data-lore="hilltop" style="position:relative;aspect-ratio:5/2;overflow:hidden;cursor:pointer;background:#000;">
+        <img src="hilltop_bg.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;transition:opacity 0.4s ease;" class="lore-bg-img">
+        <div class="lore-card-overlay"></div>
+        <div class="lore-card-info" style="position:absolute;bottom:0;left:0;right:0;padding:14px 16px 12px;">
+          <div class="lore-tag" style="background:rgba(155,100,29,0.18);color:#D4A04A;border:1px solid rgba(155,100,29,0.3);">H-Town — Vivier de Talents</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1;letter-spacing:1px;margin:5px 0 3px;">Hilltop Village</div>
+          <div class="lore-teaser">Rappeurs, basketteurs, gouverneur. H-Town a tout eu. Puis Brickville a tendu la main aux jeunes — et l'épidémie de crack a fait le reste.</div>
+          <div class="lore-cta">Lire le lore</div>
+        </div>
+      </div>
+
       <div class="lore-card" data-lore="bridgecreek" style="position:relative;grid-column:span 3;aspect-ratio:21/4;overflow:hidden;cursor:pointer;background:#000;">
         <img src="milliebeach_bg.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;transition:opacity 0.4s ease;" class="lore-bg-img">
         <div class="lore-card-overlay"></div>
@@ -1513,6 +1524,28 @@
             <div class="rule-desc">Toutes courses poursuites engagées avec les forces de l'ordre doivent être RP. Pas de sauts au-dessus de murets, pas de jump d'un pont etc.<br><br>Lors d'une chasse, les plans pneus, l'offroad et les prises d'otage sur policier sont <strong>interdits avant 15 minutes</strong>.</div>
           </div>
           <span class="rule-badge badge-warn">Important</span>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">18</div>
+          <div class="rule-content">
+            <div class="rule-title">Accent de personnage</div>
+            <div class="rule-desc">Tout joueur souhaitant incarner un personnage avec un accent étranger (Latino, Russe, Italien, etc.) doit être en mesure de le restituer de manière convaincante et cohérente. Un accent approximatif ou forcé nuit à l'immersion de l'ensemble des joueurs. Si vous n'êtes pas à l'aise avec l'accent choisi, jouez votre personnage sans accent.</div>
+          </div>
+          <span class="rule-badge badge-info">RP</span>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">19</div>
+          <div class="rule-content">
+            <div class="rule-title">Personnage Raciste</div>
+            <div class="rule-desc">Il est possible d'incarner un personnage au comportement raciste dans la limite du raisonnable, dans le cadre de certains archétypes cohérents avec l'univers (policier corrompu, Biker, Redneck, etc.).<br><br>Cette démarche doit obligatoirement être <strong>validée par le Staff via ticket</strong> avant toute mise en scène. Tout abus constaté sans validation préalable entraînera de <strong>très lourdes sanctions HRP</strong>.</div>
+          </div>
+          <span class="rule-badge badge-danger">Obligatoire</span>
         </div>
       </div>
 
@@ -2317,6 +2350,17 @@ const loreData = {
       { title: "La connexion avec San Pedro", text: "Le Doc Entrepot et San Pedro sont les deux faces d'une même opération. La drogue entre par San Pedro, transite par le Doc Entrepot, et repart vers Brickville et le reste de l'État. La mob ne gère pas la rue — elle gère la logistique. C'est plus propre. Et c'est plus rentable." }
     ],
     pills: ["Mob historique", "Syndicats corrompus", "MC implantés depuis 2010", "Transit de marchandises", "Connexion San Pedro", "Connexion Little Amalfi"]
+  },
+  hilltop: {
+    tag: "H-Town — Vivier de Talents",
+    title: "Hilltop Village",
+    intro: "Appelé H-Town par ses habitants, Hilltop Village est un quartier du New Bridge bâti dans les années 90 pour accueillir les populations voisines comme celles de Kingwood. Un quartier qui a tout connu — la gloire et la chute.",
+    sections: [
+      { title: "L'âge d'or de H-Town", text: "Au début des années 2000, Hilltop Village devient un quartier populaire et respecté. Ses rappeurs font résonner le nom H-Town au-delà des frontières de New Bridge. Ses basketteurs tournent en pro. Et le gouverneur de l'État lui-même entretient des liens familiaux forts avec ce quartier. H-Town est alors vu comme un vivier de talents, un quartier qui produit des grandes personnes." },
+      { title: "La main de Brickville", text: "Mais Brickville n'est jamais loin. Les gangsters de Brickville vont jouer les intermédiaires entre les grosses organisations criminelles et la jeunesse de H-Town, faisant la passerelle vers un monde que beaucoup de jeunes n'avaient pas cherché.", highlight: "Ce qui suit cette infiltration sera une épidémie de crack d'une violence rare. H-Town, qui avait brillé, commence à sombrer. Les mêmes rues qui avaient vu naître des talents voient maintenant tourner des gamins perdus." },
+      { title: "H-Town aujourd'hui", text: "Hilltop Village vit aujourd'hui avec ces deux visages. D'un côté, l'ombre de Brickville — une emprise psychologique sur la jeunesse du quartier que certains membres de Brickville maintiennent activement. De l'autre, des associations qui se battent pour redonner aux jeunes de H-Town un autre avenir que la rue. Le quartier n'a pas dit son dernier mot." }
+    ],
+    pills: ["H-Town", "Vivier de talents", "Influence Brickville", "Épidémie de crack", "Gouverneur de l'État", "Associations actives"]
   },
   bridgecreek: {
     tag: "Front de Mer — Côte Sud",
